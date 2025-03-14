@@ -8,12 +8,13 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using DO_AN_FPT_SHOP.Models;
 using Newtonsoft.Json.Linq;
+using DO_AN_FPT_SHOP.DesignPattern;
 
 namespace DO_AN_FPT_SHOP.Controllers
 {
     public class ProductsController : Controller
     {
-        DBFPTSHOPEntities db = new DBFPTSHOPEntities();
+        private static readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
         public ActionResult ProductDetail(int? id)
         {
             if (id == null) return RedirectToAction("Category", "Categories");
@@ -40,8 +41,6 @@ namespace DO_AN_FPT_SHOP.Controllers
 
         public static ViewModelProduct GetDetails(int id)
         {
-            DBFPTSHOPEntities db = new DBFPTSHOPEntities();
-
             var pro = db.Products.Where(r => r.ProID == id).FirstOrDefault();
             if (pro == null) return null;
             var proDe = pro.ProDetails.FirstOrDefault();

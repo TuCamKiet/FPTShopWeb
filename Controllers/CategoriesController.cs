@@ -11,17 +11,151 @@ using System.Data.Entity;
 using System.Net;
 using PagedList;
 using PagedList.Mvc;
+using DO_AN_FPT_SHOP.DesignPattern;
+using DO_AN_FPT_SHOP.DesignPattern.RepositoryPattern;
+using DO_AN_FPT_SHOP.DesignPattern.Services;
 
 namespace DO_AN_FPT_SHOP.Controllers
 {
     public class CategoriesController : Controller
     {
-        DBFPTSHOPEntities db = new DBFPTSHOPEntities();
-        // GET: Categories
+        //        
+        //        // GET: Categories
 
-        
 
-        public ActionResult Category(int? cateid,int?page, string supName, string function, double? minPrice, double? maxPrice, int? minPin, int? maxPin, int? minMonitor, int? maxMonitor, string camera)
+
+        //        public ActionResult Category(int? cateid, int? page, string supName, string function, double? minPrice, double? maxPrice, int? minPin, int? maxPin, int? minMonitor, int? maxMonitor, string camera)
+        //        {
+        //            int pageSize = 6;
+        //            int pageNum = (page ?? 1);
+
+        //            ViewBag.CheckSupName = supName;
+        //            ViewBag.Style = "background-color:#dc3545;";
+        //            ViewBag.CheckMinPrice = minPrice;
+        //            ViewBag.CheckMaxPrice = maxPrice;
+        //            ViewBag.CheckMinPin = minPin;
+        //            ViewBag.CheckMaxPin = maxPin;
+        //            ViewBag.CheckMinMonitor = minMonitor;
+        //            ViewBag.CheckMaxMonitor = maxMonitor;
+        //            ViewBag.CheckCamera = camera;
+        //            ViewBag.CheckFunction = function;
+
+        //            var result = GetAll();
+
+        //            if (cateid != null)
+        //                result = result.Where(r => r.CatID == cateid).OrderBy(r => r.ProID);
+        //            if (supName != null)
+        //                result = result.Where(r => r.SupName == supName);
+        //            if (minPrice != null && maxPrice != null)
+        //                result = result.Where(r => r.Price < maxPrice && r.Price >= minPrice);
+        //            if (function != null)
+        //                result = result.Where(r => r.Function == function);
+        //            if (minPin != null && maxPin != null)
+        //                result = result.Where(r => r.Pin < maxPin && r.Pin >= minPin);
+        //            if (minMonitor != null && maxMonitor != null)
+        //                result = result.Where(r => r.Monitor < maxMonitor && r.Price >= minMonitor);
+        //            if (camera != null)
+        //                result = result.Where(r => r.Camera == camera);
+
+
+
+        //            result = result.OrderBy(r => r.ProID);
+        //            return View(result.ToPagedList(pageNum, pageSize));
+        //        }
+
+        //        public static IQueryable<ViewModelCateItem> GetAll()
+        //        {
+        //            var ProToProDe = from a in db.Products
+        //                             join b in db.ProDetails on a.ProID equals b.ProID
+        //                             where a.RemainQuantity > 0
+        //                             select new { a.CatID, a.ProID, a.ProName, b.ProDeID, b.Pin, b.Camera, b.Ram, b.Monitor, b.Chip, b.SupID, b.Function };
+        //            var ProToSup = from a in ProToProDe
+        //                           join b in db.Suppliers on a.SupID equals b.SupID
+        //                           select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, b.SupName, a.Function };
+        //            var ProToCoDe = from a in ProToSup
+        //                            join b in db.ColorProDes on a.ProDeID equals b.ProDeID
+        //                            select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, a.SupName, a.Function, b.ColorID, b.ProImg };
+        //            var ProToStoDe = from a in ProToCoDe
+        //                             join b in db.StoProDes on a.ProDeID equals b.ProDeID
+        //                             select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, a.SupName, a.Function, a.ColorID, a.ProImg, b.StoID, b.Price };
+        //            var ProToSto = from a in ProToStoDe
+        //                           join b in db.Storages on a.StoID equals b.StoID
+        //                           select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, a.SupName, a.Function, a.ColorID, a.ProImg, b.StoID, b.StoValue, a.Price };
+
+
+        //            var result = from a in (ProToSto.GroupBy(r => r.ProDeID).Select(r => r.FirstOrDefault()))
+        //                         select new ViewModelCateItem
+        //                         {
+        //                             CatID = a.CatID,
+        //                             ProID = a.ProID,
+        //                             ProName = a.ProName,
+        //                             ProDeID = a.ProDeID,
+        //                             Pin = a.Pin,
+        //                             Camera = a.Camera,
+        //                             Ram = a.Ram,
+        //                             Monitor = a.Monitor,
+        //                             Chip = a.Chip,
+        //                             SupName = a.SupName,
+        //                             Function = a.Function,
+        //                             ProImg = a.ProImg,
+        //                             Price = (double)a.Price,
+        //                             Storage = a.StoValue
+        //                         };
+        //            return result;
+        //        }
+        //    }
+        //}
+
+        //        private readonly ICategoryRepository _categoryRepository;
+
+        //        // 🔹 Inject Repository vào Controller
+        //        public CategoriesController()
+        //        {
+        //            this._categoryRepository = new CategoryRepository();
+        //        }
+
+        //        public CategoriesController(ICategoryRepository categoryRepository)
+        //        {
+        //            this._categoryRepository = categoryRepository;
+        //        }
+
+        //        public ActionResult Category(int? cateid, int? page, string supName, string function, double? minPrice, double? maxPrice, int? minPin, int? maxPin, int? minMonitor, int? maxMonitor, string camera)
+        //        {
+        //            int pageSize = 6;
+        //            int pageNum = (page ?? 1);
+
+        //            ViewBag.CheckSupName = supName;
+        //            ViewBag.Style = "background-color:#dc3545;";
+        //            ViewBag.CheckMinPrice = minPrice;
+        //            ViewBag.CheckMaxPrice = maxPrice;
+        //            ViewBag.CheckMinPin = minPin;
+        //            ViewBag.CheckMaxPin = maxPin;
+        //            ViewBag.CheckMinMonitor = minMonitor;
+        //            ViewBag.CheckMaxMonitor = maxMonitor;
+        //            ViewBag.CheckCamera = camera;
+        //            ViewBag.CheckFunction = function;
+
+        //            // 🔹 Gọi Repository thay vì truy vấn DB trực tiếp
+        //            var result = _categoryRepository.GetFilteredCategories(cateid, supName, function, minPrice, maxPrice, minPin, maxPin, minMonitor, maxMonitor, camera);
+
+        //            return View(result.ToPagedList(pageNum, pageSize));
+        //        }
+        //    }
+        //}
+        private readonly ICategoryService _categoryService;
+
+        // 🔹 Inject Service vào Controller
+        public CategoriesController()
+        {
+            this._categoryService = new CategoryService();
+        }
+
+        public CategoriesController(ICategoryService categoryService)
+        {
+            this._categoryService = categoryService;
+        }
+
+        public ActionResult Category(int? cateid, int? page, string supName, string function, double? minPrice, double? maxPrice, int? minPin, int? maxPin, int? minMonitor, int? maxMonitor, string camera)
         {
             int pageSize = 6;
             int pageNum = (page ?? 1);
@@ -37,69 +171,10 @@ namespace DO_AN_FPT_SHOP.Controllers
             ViewBag.CheckCamera = camera;
             ViewBag.CheckFunction = function;
 
-            var result = GetAll();
+            // 🔹 Gọi Service thay vì Repository
+            var result = _categoryService.GetFilteredCategories(cateid, supName, function, minPrice, maxPrice, minPin, maxPin, minMonitor, maxMonitor, camera);
 
-            if (cateid != null)
-                result = result.Where(r => r.CatID == cateid).OrderBy(r => r.ProID);
-            if (supName != null)
-                result = result.Where(r => r.SupName == supName);
-            if (minPrice != null && maxPrice != null)
-                result = result.Where(r => r.Price < maxPrice && r.Price >= minPrice);
-            if (function != null)
-                result = result.Where(r => r.Function == function);
-            if (minPin != null && maxPin != null)
-                result = result.Where(r => r.Pin < maxPin && r.Pin >= minPin);
-            if (minMonitor != null && maxMonitor != null)
-                result = result.Where(r => r.Monitor < maxMonitor && r.Price >= minMonitor);
-            if (camera != null)
-                result = result.Where(r => r.Camera == camera);
-
-
-
-            result = result.OrderBy(r => r.ProID);
             return View(result.ToPagedList(pageNum, pageSize));
-        }
-
-        public static IQueryable<ViewModelCateItem> GetAll()
-        {
-            DBFPTSHOPEntities db = new DBFPTSHOPEntities();
-            var ProToProDe = from a in db.Products
-                             join b in db.ProDetails on a.ProID equals b.ProID
-                             where a.RemainQuantity > 0
-                             select new { a.CatID, a.ProID, a.ProName, b.ProDeID, b.Pin, b.Camera, b.Ram, b.Monitor, b.Chip, b.SupID, b.Function };
-            var ProToSup = from a in ProToProDe
-                           join b in db.Suppliers on a.SupID equals b.SupID
-                           select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, b.SupName, a.Function };
-            var ProToCoDe = from a in ProToSup
-                            join b in db.ColorProDes on a.ProDeID equals b.ProDeID
-                            select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, a.SupName, a.Function, b.ColorID, b.ProImg };
-            var ProToStoDe = from a in ProToCoDe
-                             join b in db.StoProDes on a.ProDeID equals b.ProDeID
-                             select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, a.SupName, a.Function, a.ColorID, a.ProImg, b.StoID, b.Price };
-            var ProToSto = from a in ProToStoDe
-                           join b in db.Storages on a.StoID equals b.StoID
-                           select new { a.CatID, a.ProID, a.ProName, a.ProDeID, a.Pin, a.Camera, a.Ram, a.Monitor, a.Chip, a.SupName, a.Function, a.ColorID, a.ProImg, b.StoID, b.StoValue, a.Price };
-
-
-            var result = from a in (ProToSto.GroupBy(r => r.ProDeID).Select(r => r.FirstOrDefault()))
-                         select new ViewModelCateItem
-                         {
-                             CatID = a.CatID,
-                             ProID = a.ProID,
-                             ProName = a.ProName,
-                             ProDeID = a.ProDeID,
-                             Pin = a.Pin,
-                             Camera = a.Camera,
-                             Ram = a.Ram,
-                             Monitor = a.Monitor,
-                             Chip = a.Chip,
-                             SupName = a.SupName,
-                             Function = a.Function,
-                             ProImg = a.ProImg,
-                             Price = (double)a.Price,
-                             Storage = a.StoValue
-                         };
-            return result;
         }
     }
 }

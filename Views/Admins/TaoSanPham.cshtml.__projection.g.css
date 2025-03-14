@@ -1,0 +1,36 @@
+/* BEGIN EXTERNAL SOURCE */
+
+    select {
+        width: 188px;
+        height: 35px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    input {
+        border-radius: 5px;
+        height: 35px;
+    }
+
+    h2 {
+        margin-left: 35%;
+        color: #3350b4;
+    }
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+div {
+width:1200px;margin:0px auto;
+}
+/* END EXTERNAL SOURCE */
+/* BEGIN EXTERNAL SOURCE */
+div {
+margin-top:20px;
+}
+/* END EXTERNAL SOURCE */

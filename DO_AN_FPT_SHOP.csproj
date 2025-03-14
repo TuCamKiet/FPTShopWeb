@@ -141,6 +141,12 @@
     <Compile Include="Controllers\OrderListController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DesignPattern\DBContextSingleton.cs" />
+    <Compile Include="DesignPattern\EntityFactory.cs" />
+    <Compile Include="DesignPattern\RepositoryPattern\CategoryRepository.cs" />
+    <Compile Include="DesignPattern\RepositoryPattern\ICategoryRepository.cs" />
+    <Compile Include="DesignPattern\Services\CategoryService.cs" />
+    <Compile Include="DesignPattern\Services\ICategoryService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,7 +238,7 @@
     <Content Include="Content\CartStyle3.css" />
     <Content Include="Content\CategoryPhone5.css" />
     <Content Include="Content\CategoryPhone7.css" />
-    <Content Include="Content\HomeStyle2.css" />
+    <Content Include="Content\HomeStyle.css" />
     <Content Include="Content\IMG\Apple.jpg" />
     <Content Include="Content\IMG\BaLo.jpg" />
     <Content Include="Content\IMG\BanPhim.jpg" />

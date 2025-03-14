@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
+using DO_AN_FPT_SHOP.DesignPattern;
 using DO_AN_FPT_SHOP.Models;
 using Microsoft.Ajax.Utilities;
 
@@ -11,7 +12,7 @@ namespace DO_AN_FPT_SHOP.Controllers
 {
     public class UsersController : Controller
     {
-        DBFPTSHOPEntities db = new DBFPTSHOPEntities();
+        private readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
         // GET: Users
         public ActionResult Login()
         {
@@ -207,9 +208,6 @@ namespace DO_AN_FPT_SHOP.Controllers
 
             return RedirectToAction("Login");
         }
-
-        
-
-        
+  
     }
 }

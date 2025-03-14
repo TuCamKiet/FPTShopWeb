@@ -1,4 +1,5 @@
-﻿using DO_AN_FPT_SHOP.Models;
+﻿using DO_AN_FPT_SHOP.DesignPattern;
+using DO_AN_FPT_SHOP.Models;
 using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace DO_AN_FPT_SHOP.Controllers
     {
         // GET: OrderList
 
-        DBFPTSHOPEntities db = new DBFPTSHOPEntities();
+        private static readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
         // GET: Carts
         public ActionResult Cart()
         {
@@ -187,7 +188,7 @@ namespace DO_AN_FPT_SHOP.Controllers
 
         public static int GetTotalQuan(string username)
         {
-            DBFPTSHOPEntities db = new DBFPTSHOPEntities();
+            
             var c = db.Customers.Where(r => r.UserName == username).FirstOrDefault();
             if (c == null) return 0;
             var o = db.Orders.Where(r => r.Customers.FirstOrDefault().UserName == c.UserName && r.OrderStatus == 0).FirstOrDefault();

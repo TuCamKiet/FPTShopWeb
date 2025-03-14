@@ -47,7 +47,7 @@
                 </div>
                 <div>
                     <select name="catID">
-                        @{ DBFPTSHOPEntities db = new DBFPTSHOPEntities();}
+                        @{DBFPTSHOPEntities db = DO_AN_FPT_SHOP.DesignPattern.DBContextSingleton.Instance;}
                         @foreach (var item in db.Categories.ToList())
                         {
                             <option id="@item.CatID" value="@item.CatID">@item.NameCate</option>
