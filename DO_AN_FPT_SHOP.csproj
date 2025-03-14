@@ -152,11 +152,11 @@
     <Compile Include="DesignPattern\Services\CategoryService.cs" />
     <Compile Include="DesignPattern\Services\ICategoryService.cs" />
     <Compile Include="DesignPattern\Strategy\AdminLoginStrategy.cs" />
-    <Compile Include="DesignPattern\Strategy\CategorySearchStrategy.cs" />
     <Compile Include="DesignPattern\Strategy\CustomerLoginStrategy.cs" />
     <Compile Include="DesignPattern\Strategy\ILoginStrategy.cs" />
-    <Compile Include="DesignPattern\Strategy\ISearchStrategy.cs" />
-    <Compile Include="DesignPattern\Strategy\NameSearchStrategy.cs" />
+    <Compile Include="DesignPattern\Templates\CancelOrder.cs" />
+    <Compile Include="DesignPattern\Templates\BuyOrder.cs" />
+    <Compile Include="DesignPattern\Templates\OrderTemplate.cs" />
     <Compile Include="DesignPattern\UnitOfWorkPattern\IUnitOfWork.cs" />
     <Compile Include="DesignPattern\UnitOfWorkPattern\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
