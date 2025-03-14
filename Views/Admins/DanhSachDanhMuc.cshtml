@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DO_AN_FPT_SHOP.Models.Category>
+@{
+    ViewBag.Title = "Danh sách hàng hóa";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}
+<style>
+    h2 {
+        margin-left: 40%;
+        color: #3350b4;
+    }
+
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+</style>
+<h1 id="admin-title">ADMIN</h1>
+<h2>QUẢN LÝ DANH MỤC</h2>
+<p>@Html.ActionLink("Thêm mới", "TaoDanhMuc", null, new { @class = "btn  btn-sm  btn-dark" })</p>
+<table class="table">
+    <tr>
+
+        <th>DANH MỤC</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr class="btn-sm">
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCate)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "ChinhSuaDanhMuc", new { id = item.CatID }, new { @class = "btn btn-sm btn-success" }) |
+                @Html.ActionLink("Xóa", "XoaDanhMuc", new { id = item.CatID }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+</table>
+
+
+

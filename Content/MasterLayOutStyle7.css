@@ -1,0 +1,397 @@
+﻿
+body {
+    margin: 0px !important;
+    padding: 0px !important;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.fs-header {
+    width: 100%;
+    height: 100px;
+}
+
+.f-hdtop {
+    width: 100%;
+    height: 60px;
+    background: #cd1818;
+}
+
+.f-hdmenu {
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    background-color: black;
+}
+
+.f-wrap {
+    width: 1200px;
+    height: 60px;
+    margin: 0px auto;
+    display: flex;
+}
+
+.f-logo {
+    width: 195px;
+    height: 60px;
+}
+
+.f-logo-frame {
+    width: 175px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.logo-img img {
+    height: 45px;
+    width: 175px;
+}
+
+.fs-search {
+    height: 60px;
+    width: 500px;
+    margin-left: 25px;
+}
+
+.fs-hdmn {
+    width: 450px;
+    height: 60px;
+    margin: 0px;
+    padding:5px;
+    margin-top:-5px;
+   
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    z-index: 1;
+    min-width: 160px;
+    padding: 5px 10px;
+    display: none;
+    background: #f9f9f9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: black;
+}
+
+    .dropdown-content p:hover {
+        font-weight: 600;
+        color: black;
+    }
+
+.fs-search-frame {
+    width: 500px;
+    height: 40px;
+    margin-top: 10px;
+    display: flex;
+}
+
+    .fs-search-frame input {
+        border: 0px solid black;
+        width: 490px;
+        height: 40px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+input::placeholder {
+    font-size: 15px;
+}
+
+.btn-search {
+    border: 0px solid black;
+    margin-left: -20px;
+    height: 42px;
+    width: 68px;
+    background-color: #333;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
+}
+
+    .btn-search img {
+        height: 20px;
+        width: 25px;
+    }
+
+.fs-hdmn-frame {
+    height: 60px;
+    width: 450px;
+    margin-left: 55px;
+    border: 0px solid black;
+}
+
+.fs-hdmn {
+    height: 60px;
+    width: 450px;
+    display: flex;
+}
+
+.fs-hdmn-frame ul li {
+    list-style-type: none;
+}
+
+.fs-hdmn li {
+    display: inline;
+    padding: 0px 7px;
+}
+
+.fs-hdmn a {
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.hdmn-img img {
+    margin-top: 8px;
+    height: 25px;
+    width: 25px;
+}
+
+.list-product ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: -10px;
+}
+
+.list-product li img {
+    height: 25px;
+    width: 30px;
+}
+
+.all-products {
+    display: flex;
+}
+
+    .all-products li {
+        display: flex;
+        padding-right: 15px;
+    }
+
+.typeProduct span:hover {
+    color: gray;
+}
+
+.list-product span {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.list-product a {
+    text-decoration: none;
+}
+
+.typeProduct {
+    margin-top: 4px;
+}
+
+.root {
+    width: 100%;
+    height:fit-content !important;
+}
+
+.fs-footer {
+    width: 100%;
+    height: 400px;
+}
+
+.fs-footer-top {
+    width: 100%;
+    height: 330px;
+    background-color: #fff;
+}
+
+.fs-footer-top-frame {
+    padding-top:10px;
+    width: 1200px;
+    height: 330px;
+    margin: 0px auto;
+    display: flex;
+}
+
+.list-info-footer {
+    width: 240px;
+    height: 320px;
+}
+
+    .list-info-footer ul li {
+        list-style-type: none;
+    }
+
+    .list-info-footer ul {
+        padding: 0px;
+        margin-left: 15px;
+    }
+
+        .list-info-footer ul a {
+            text-decoration: none;
+            color: #0664f9;
+        }
+    
+    .list-info-footer li {
+        margin-bottom: 18px;
+        line-height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    .list-info-footer #info:hover {
+        color: black;
+        border-bottom: 1px solid black;
+    }
+
+.ft-wrap {
+    height: 40px;
+    width: 200px;
+    display: flex;
+    margin-left: 15px;
+}
+
+    .ft-wrap #cth1 {
+        width: 40px;
+        height: 40px;
+    }
+
+    .ft-wrap #cth2 {
+        height: 40px;
+        width: 130px;
+    }
+
+    .ft-wrap #dmca, #dv, #thvn {
+        height: 30px;
+        width: 57px;
+    }
+
+.fs-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #444b52;
+    font-size: 14px;
+}
+
+.support .phone-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: #cb1c22;
+}
+
+.ft-wrap-payment {
+    width: 200px;
+    height: 100px;
+    margin-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.ft-pay {
+    width: 46px;
+    height: 29px;
+}
+
+.connect {
+    width: 240px;
+    height: 60px;
+    display: flex;
+}
+
+    .connect img {
+        height: 35px;
+        width: 35px;
+        margin-top: -10px;
+        padding: 5px;
+    }
+
+.website-and-shop {
+    width: 240px;
+    height: 260px;
+}
+
+.ft-tit {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #444b52;
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.ft-tit-shop {
+    margin-left: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13.5px;
+    margin-bottom: 0px;
+}
+
+.ft-shop-logo, .ft-center-logo, .ft-medical-logo {
+    width: 145px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+    .ft-shop-logo img {
+        width: 145px;
+        height: 30px;
+    }
+
+    .ft-center-logo img {
+        width: 135px;
+        height: 30px;
+    }
+
+    .ft-medical-logo img {
+        width: 135px;
+        height: 30px;
+    }
+
+.fs-footer-bottom {
+    width: 100%;
+    height: 70px;
+    background-color: #f2f2f2;
+    margin-top: 10px;
+}
+
+.fs-footer-bottom-frame {
+    width: 1200px;
+    height: 70px;
+    margin: 0px auto;
+    display: flex;
+}
+
+    .fs-footer-bottom-frame p {
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #444b52;
+        line-height: 20px;
+        max-width: 1200px;
+        text-align: center;
+    }
+
+    .fs-footer-bottom-frame a {
+        text-decoration: none;
+        color: #0168fa;
+    }
+
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+}

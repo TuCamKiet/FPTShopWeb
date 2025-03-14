@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f5f8ff;
+    }
+    .login{
+        width:1170px;
+        margin:0px auto;
+    }
+        .login div {
+            display: flex;
+            justify-content: center;
+            align-items:center;
+        }
+    .login-frame {
+        width: 650px;
+        margin: 0px auto;
+        border: 1px solid lightgray;
+        border-radius: 8px;
+        padding: 20px;
+        flex-direction:column;
+    }
+    .login-form {
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        border-radius: 5px;
+        width:400px;
+    }
+    .register{
+        margin-top:20px;
+        gap:20px;
+    }
+    .function {
+        height: 40px;
+        border: none;
+        background-color: #dc3545;
+        color: floralwhite;
+        border-radius: 7px;
+        width: 150px;
+        font-weight: 600;
+        font-size: 18px;
+        margin: auto;
+    }
+        .function a {
+            text-decoration: none;
+            color: inherit;
+        }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="login">     
+        <div class="login-frame">
+            <h2>ĐĂNG NHẬP </h2>
+            <form action="/Users/Login" method="post">
+                <div class="login-form">
+                    <label style="margin-bottom:5px;">Username : </label>
+                    <input type="text" required value="" name="username" style="width:200px; height:25px; margin-bottom:10px;"/>
+                    <label  style="margin-bottom:5px;">Password : </label>
+                    <input type="password" required value="" name="password" style="width:200px; height:25px;" />
+                </div>
+                <p style="color:red">@ViewBag.Message @ViewBag.BlockedWarn</p>
+                <div class="register">
+                    <input class="function" type="submit" value="Đăng nhập" />
+                    <div class="function"><a href="@Url.Action("Register")">Đăng kí</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

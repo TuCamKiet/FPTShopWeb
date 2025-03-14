@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "TaoVoucher";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 id="admin-title">ADMIN</h1>
+<h2>THÊM VOUCHER</h2>
+<form action="~/Admins/TaoVoucher" method="post">
+    <div class="form-horizontal">
+        <div class="form-group" style="width:1200px;margin:0px auto; margin-top:20px">
+            <div class="control-label col-md-2">
+                MÔ TẢ
+            </div>
+            <div class="col-md-10">
+                <input required maxlength="50" name="Description" type="text" />
+            </div>
+            <div class="control-label col-md-2">
+                MỨC GIẢM
+            </div>
+            <div class="col-md-10">
+                <input required maxlength="50" min="1" name="Discount" type="number" />
+            </div>
+            <div class="col-sm-offset-2 col-sm-10" style="margin-top:10px">
+                <input type="submit" value="Thêm mới" class="btn btn-primary" />
+                @Html.ActionLink("Danh sách", "DanhSachVoucher", null, new { @class = "btn btn-info" })
+            </div>
+        </div>
+    </div>
+</form>

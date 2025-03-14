@@ -1,0 +1,130 @@
+﻿@using DO_AN_FPT_SHOP.Models
+@model DO_AN_FPT_SHOP.Models.Product
+@{
+    ViewBag.Title = "Chỉnh sửa thông tin sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<style>
+    select {
+        width: 188px;
+        height: 35px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    input {
+        border-radius: 5px;
+        height: 35px;
+    }
+
+    h2 {
+        margin-left: 35%;
+        color: #3350b4;
+    }
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+</style>
+<body>
+    <h1 id="admin-title">ADMIN</h1>
+    <h2>CHỈNH SỬA THÔNG TIN SẢN PHẨM</h2>
+    <form action="~/Admins/ChinhSuaSanPham" method="post">
+        <div class="form-horizontal">
+            <div class="form-group" style="width:1200px;margin:0px auto;">
+                <div class="control-label col-md-2">
+                    DANH MỤC
+                </div>
+                <div>
+                    <select name="catID">
+                        @{ DBFPTSHOPEntities db = new DBFPTSHOPEntities();}
+                        @foreach (var item in db.Categories.ToList())
+                        {
+                            <option id="@item.CatID" value="@item.CatID">@item.NameCate</option>
+                        }
+                    </select>
+                </div>
+                <div class="control-label col-md-2">MÃ SẢN PHẨM</div>
+                <div class="col-md-10"><input style="background-color:lightgray" name="proID" value="@Model.ProID" readonly /></div>
+                <div class="control-label col-md-2">TÊN SẢN PHẨM</div>
+                <div class="col-md-10"><input required maxlength="50" type="text" name="ProName" value="@Model.ProName" /></div>
+                <div class="control-label col-md-2">CHỨC NĂNG</div>
+                <div class="col-md-10"><input maxlength="50" type="text" name="Function" value="@Model.ProDetails.FirstOrDefault().Function" /></div>
+                <div class="control-label col-md-2">PIN</div>
+                <div class="col-md-10"><input min="0" maxlength="50" type="number" name="Pin" value="@Model.ProDetails.FirstOrDefault().Pin" /></div>
+                <div class="control-label col-md-2">MÀN HÌNH</div>
+                <div class="col-md-10"><input min="0" maxlength="50" type="number" name="Monitor" value="@Model.ProDetails.FirstOrDefault().Monitor" /></div>
+                <div class="control-label col-md-2">CAMERA</div>
+                <div class="col-md-10"><input maxlength="50" type="text" name="Camera" value="@Model.ProDetails.FirstOrDefault().Monitor" /></div>
+                <div class="control-label col-md-2">CHIP</div>
+                <div class="col-md-10"><input maxlength="50" type="text" name="Chip" value="@Model.ProDetails.FirstOrDefault().Chip" /></div>
+                <div class="control-label col-md-2">RAM</div>
+                <div class="col-md-10"><input min="0" maxlength="50" type="number" name="Ram" value="@Model.ProDetails.FirstOrDefault().Ram" /></div>
+                <div class="control-label col-md-2">HÃNG CUNG CẤP</div>
+                <div>
+                    <select name="supID">
+                        @foreach (var item in db.Suppliers.ToList())
+                        {
+                            <option id="@item.SupID" value="@item.SupID">@item.SupName</option>
+                        }
+                    </select>
+                </div>
+                <div class="control-label col-md-2">MÀU SẮC</div>
+                <div>
+                    <select name="colorID">
+                        @foreach (var item in db.Colors.ToList())
+                        {
+                            <option id="@item.ColorID" value="@item.ColorID">@item.ColorName</option>
+                        }
+                    </select>
+                </div>
+                <div class="control-label col-md-2">
+                    HÌNH ẢNH SẢN PHẨM
+                </div>
+                <div class="col-md-10">
+                    <input name="ProImage" type="url" value="@Model.ProDetails.FirstOrDefault().ColorProDes.FirstOrDefault().ProImg" />
+                </div>
+                <div class="control-label col-md-2">DUNG LƯỢNG</div>
+                <div>
+                    <select name="stoID">
+                        @foreach (var item in db.Storages.ToList())
+                        {
+                            <option id="@item.StoID" value="@item.StoID">@item.StoValue</option>
+                        }
+                    </select>
+                </div>
+                <div class="control-label col-md-2">
+                    GIÁ
+                </div>
+                <div class="col-md-10">
+                    <input required min="0" maxlength="50" name="Price" type="number" value="@Model.ProDetails.FirstOrDefault().StoProDes.FirstOrDefault().Price" />
+                </div>
+                <div class="control-label col-md-2">
+                    SỐ LƯỢNG TỒN KHO
+                </div>
+                <div class="col-md-10">
+                    <input min="0" maxlength="50" name="RemainQuantity" required type="number" value="@Model.RemainQuantity" />
+                </div>
+                <div style="margin-top:20px;" class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" class="btn btn-primary" value="Cập nhật" />
+                    @Html.ActionLink("Danh sách", "DanhSachSanPham", null, new { @class = "btn btn-info" })
+                </div>
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+

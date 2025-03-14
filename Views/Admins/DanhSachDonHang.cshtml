@@ -1,0 +1,74 @@
+﻿@using DO_AN_FPT_SHOP.Models
+@using System.Linq
+@model List<DO_AN_FPT_SHOP.Models.Order>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    h2 {
+        width: 310px;
+        margin-left: 39%;
+        color: #3350b4;
+        border-bottom: 5px solid lightgray;
+    }
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+</style>
+<H1 id="admin-title">ADMIN</H1>
+<h2>LỊCH SỬ MUA HÀNG</h2>
+<table class="table">
+    <tr>
+        <th>NGÀY ĐẶT HÀNG </th>
+        <th>MÃ ĐẶT HÀNG</th>
+        <th>TỔNG GIÁ</th>
+        <th>VOUCHER</th>
+        <th>SỐ LƯỢNG ĐẶT HÀNG</th>
+        <th>TRẠNG THÁI ĐƠN HÀNG</th>
+        <th></th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(orderItem => order.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(orderItem => order.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(orderItem => order.TotalPrice)
+            </td>
+            <td style="overflow-y:scroll">
+                @foreach (var voucher in order.OrderVouchers)
+                {
+                    <p>@voucher.Voucher.Description</p>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(orderItem => order.TotalQuantity)
+            </td>
+            <td>
+                @if (order.OrderStatus == 0) //trong action đã lọc sản phẩm đã hủy
+                {
+                    <span>Chưa thanh toán</span>
+                }
+                else if (order.OrderStatus == 1)
+                {
+                    <span>Đã hủy</span>
+                }
+                else
+                {
+                    <span>Đã thanh toán</span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết đơn hàng", "ChiTietDonHang", new { OrderID = order.OrderID }, new { @class = "btn btn-sm btn-dark" })
+            </td>
+        </tr>
+    }
+</table>

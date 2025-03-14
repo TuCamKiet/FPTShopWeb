@@ -1,0 +1,531 @@
+﻿
+body {
+    margin: 0px !important;
+    padding: 0px !important;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e4e8ed;
+}
+
+.cart-top {
+    background-color: #e4e8ed;
+}
+
+.cart-top-frame {
+    width: 800px;
+    margin: 0px auto;
+    height: 1460px;
+}
+
+.cart-top-content {
+    width: 800px;
+    margin: 0px auto;
+    height: 100px;
+    width: 800px;
+}
+
+.top-content-first {
+    width: 800px;
+    height: 40px;
+    padding: 16px 8px;
+}
+
+    .top-content-first a {
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+.top-content-second {
+    width: 800px;
+    height: 60px;
+}
+
+    .top-content-second p {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 20px;
+        line-height: 28px;
+    }
+
+.top-content-box-prod {
+    width: 795px;
+    height: 700px;
+    background: white;
+    border-radius: 8px;
+}
+
+.container-info {
+    padding: 16px 16px;
+    width: 795px;
+    height: 690px;
+}
+
+.box-prod {
+    width: 750px;
+    display: flex;
+    gap: 20px;
+}
+
+.box-prod-img {
+    height: 100px;
+    width: 100px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+.box-prod-img-frame {
+    height: 90px;
+    width: 90px;
+    margin: 0px auto;
+}
+
+.box-prod-img img {
+    height: 90px;
+    width: 90px;
+    margin-top: 5px;
+}
+
+.box-prod-info {
+    height: 100px;
+    width: 670px;
+}
+
+.name-prod {
+    height: 24px;
+    width: 665px;
+    display: flex;
+}
+
+    .name-prod h2 {
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 24px;
+        color: #020B27;
+    }
+
+    .name-prod img {
+        height: 30px;
+        width: 30px;
+        margin-top: -5px;
+        margin-left: 140px;
+        cursor: pointer;
+    }
+
+.box-prod-option {
+    width: 670px;
+    height: 76px;
+    display: flex;
+    gap: 227px;
+}
+
+.color-and-quantity {
+    height: 76px;
+    width: 250px;
+    display: flex;
+    gap: 10px;
+}
+
+.color {
+    width: 120px;
+    height: 76px;
+}
+
+    .color p, .quantity p {
+        font-size: 16px;
+        color: #4A4F63;
+        margin: 0px;
+    }
+
+#list-color {
+    width: 115px;
+    height: 35px;
+    border-radius: 50px;
+    margin-top: 5px;
+    border: 0.5px solid lightgray;
+}
+
+.quantity {
+    width: 130px;
+    height: 76px;
+}
+
+    .quantity input {
+        margin-top: 5px;
+        width: 50px;
+        height: 36px;
+        border-radius: 15px;
+        border: 2px solid lightgray;
+    }
+
+.newPrice-oldPrice {
+    height: 60px;
+    width: 170px;
+}
+
+#newPrice {
+    margin-left: 55px;
+    width: 111px;
+    margin-bottom: 3px;
+    font-weight: 600;
+    color: #CB1C22;
+    font-size: 20px;
+}
+
+#oldPrice {
+    width: 111px;
+    text-decoration: line-through;
+    font-size: 16px;
+    margin-left: 77px;
+}
+
+.voucher-box {
+    width: 770px;
+    height: 100px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    display: block;
+}
+
+.voucher-product-1 {
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.voucher-product-2 {
+    color: var(--gray-700);
+    font-size: 18px;
+}
+
+#luu-y {
+    color: dimgray;
+    font-size: 16px;
+    margin-left: 18px;
+}
+
+.voucher1, #voucher2, #voucher-pay-1, #voucher-pay-2, #voucher-pay-3 {
+    height: 18px;
+    width: 18px;
+}
+
+
+.voucher-pay {
+    width: 770px;
+    height: 170px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+.top-content-box-discount {
+    margin-top: 20px;
+    width: 800px;
+    height: 200px;
+    border-radius: 8px;
+    background: white;
+}
+
+.discount-banner {
+    width: 800px;
+    height: 45px;
+    background-image: url("https://fptshop.com.vn/estore-images/bggiftpromotion.png");
+    position: relative;
+    background-color: lightcoral;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#discount-text {
+    font-weight: 700;
+    color: white;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.discount-content {
+    display: block;
+    width: contain;
+    height: 155px;
+    padding: 16px 16px;
+}
+
+.discount-pay {
+    color: black;
+    font-weight: 500;
+    font-size: 17.5px;
+    text-align: justify;
+}
+
+    .discount-pay a {
+        text-decoration: none;
+        margin-left: 25px;
+        font-size: 17px;
+    }
+
+.box-discount-content {
+    height: 74px;
+    width: contain;
+}
+
+.box-discount-content-1, .box-discount-content-2 {
+    height: 37px;
+    width: contain;
+    display: flex;
+}
+
+.discount-content-text {
+    display: flex;
+    padding: 5px;
+    font-size: 15px;
+}
+
+    .discount-content-text p {
+        margin-left: 265px;
+    }
+
+.delivery {
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.delivery-content {
+    padding: 16px 16px;
+}
+
+.delivery-option {
+    display: flex;
+    width: contain;
+    height: 40px;
+}
+
+.choose-form {
+    display: flex;
+}
+
+    .choose-form p {
+        font-weight: 600;
+        font-size: 22px;
+    }
+
+.chon-hinhthuc {
+    display: flex;
+    margin-left: 105px;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+    .chon-hinhthuc input {
+        width: 20px;
+        height: 20px;
+    }
+
+.customer-info {
+    margin-top: 10px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.customer-info-container {
+    padding: 20px;
+}
+
+.customer-info-hd {
+    display: flex;
+}
+
+#thong-tin-nhan-hang {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.customer-info-hd span a {
+    margin-left: 470px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.customer-info-body #nguoi-dat-hang {
+    display: flex;
+    gap: 100px;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.customer-info-ft #nguoinhan {
+    display: flex;
+    gap: 130px;
+    font-size: 17px;
+}
+
+.name-phoneNumber p {
+    font-weight: 600;
+    color: dimgray;
+}
+
+.address-info {
+    background: #f5f5f5;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+#form {
+    padding: 20px;
+}
+
+#form-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.address-info input {
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+.address-detail {
+    display: flex;
+    gap: 15px;
+}
+
+.time {
+    margin-top: 25px;
+}
+
+    .time select {
+        width: 490px;
+        height: 56px;
+        border-radius: 10px;
+        border: 1px solid lightgray;
+    }
+
+#time-text {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* ===========    CART BOTTOM      ===========*/
+.cart-bottom {
+    position: sticky;
+    bottom: 0;
+    margin-top: 60px;
+    width: 100%;
+    height: 220px;
+}
+
+.cart-bottom-first {
+    border-bottom: 1px solid lightgray;
+}
+
+.cart-bottom-first, .cart-bottom-second {
+    width: 100%;
+    height: 50px;
+    background: white;
+}
+
+.cart-bottom-first-frame, .cart-bottom-second-frame {
+    width: 800px;
+    margin: 0px auto;
+    height: 50px;
+    display: flex;
+    padding: 10px;
+}
+
+    .cart-bottom-first-frame img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .cart-bottom-first-frame a {
+        margin-left: 10px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .cart-bottom-second-frame input {
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+    }
+
+    .cart-bottom-second-frame label {
+        margin-left: 10px;
+        font-size: 17.5px;
+    }
+
+    .cart-bottom-second-frame a {
+        color: black;
+    }
+
+        .cart-bottom-second-frame a:hover {
+            color: blue;
+        }
+
+.cart-bottom-last {
+    width: 100%;
+    height: 120px;
+    background-color: #f7f5f5;
+}
+
+.cart-bottom-last-frame {
+    width: 800px;
+    margin: 0px auto;
+    height: 120px;
+    display: flex;
+    padding: 15px;
+    gap: 30px;
+}
+
+.cart-bottom-last-left, .cart-bottom-last-right {
+    height: 100px;
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-bottom-total, .cart-bottom-discount, .cart-bottom-discount-voucher {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: #4A4F63;
+}
+
+    .cart-bottom-total #total-price {
+        color: black;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .cart-bottom-discount #discount-price, .cart-bottom-discount-voucher #save {
+        font-size: 20px;
+    }
+
+    .cart-bottom-total p, .cart-bottom-discount p, .cart-bottom-discount-voucher p {
+        margin-bottom: 5px;
+    }
+
+.pay-product {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .pay-product #newPrice {
+        font-size: 20px;
+        width: 110px;
+        margin-left: 0px;
+    }
+
+.btn-order {
+    height: 51px;
+    border-radius: 40px;
+    border: 0px;
+    background-color: #cb1c22;
+}
+
+    .btn-order span {
+        color: white;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+

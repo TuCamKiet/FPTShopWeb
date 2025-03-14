@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f5f8ff;
+    }
+
+    .login {
+        width: 1170px;
+        margin: 0px auto;
+    }
+
+        .login div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    .login-frame {
+        width: 650px;
+        margin: 0px auto;
+        border: 1px solid lightgray;
+        border-radius: 8px;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        border-radius: 5px;
+        width:250px;
+        height:25px;
+        margin-bottom:10px;
+    }
+
+    .register {
+        margin-top: 20px;
+    }
+
+    .function {
+        height: 40px;
+        border: none;
+        background-color: #dc3545;
+        color: floralwhite;
+        border-radius: 7px;
+        width: 150px;
+        font-weight: 600;
+        font-size: 18px;
+        margin: auto;
+    }
+
+        .function a {
+            text-decoration: none;
+            color: inherit;
+        }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="login">
+        <div class="login-frame">
+            <h2>ĐĂNG KÍ </h2>
+            <form action="/Users/Register" method="post">
+                <div class="login-form">
+                    <label> Phone Number : </label>
+                    <input type="text" required value="" name="phonenumber" maxlength=10/>
+                    <label>Username : </label>
+                    <input type="text" required value="" name="username" maxlength=50/>
+                    <label>Password : </label>
+                    <input type="password" required value="" name="password" maxlength="50"/>
+                    <label>Confirm Password : </label>
+                    <input type="password" required value="" name="cpassword" maxlength=50/>
+                    <label> Email : </label>
+                    <input type="email" value="" name="email" maxlength=50/>
+                    <label> Name : </label>
+                    <input type="text" value="" name="name" maxlength=50/>
+                    <input hidden name="role" value="customer" />
+                </div>
+                <p style="color:red">@ViewBag.Message</p>
+                <div class="register">
+                    <input class="function" type="submit" value="Đăng kí" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

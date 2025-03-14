@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBFPTSHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Phone" />
+    </Key>
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Admin__UserName__5812160E" FromRole="Admin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CatID" />
+    </Key>
+    <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__CatID__3C69FB99" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ColorProDes" Relationship="Self.FK__ColorProD__ProIm__5CD6CB2B" FromRole="Color" ToRole="ColorProDe" />
+  </EntityType>
+  <EntityType Name="ColorProDe">
+    <Key>
+      <PropertyRef Name="ColorID" />
+      <PropertyRef Name="ProDeID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" />
+    <Property Name="ProDeID" Type="Int32" Nullable="false" />
+    <Property Name="ProImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Color" Relationship="Self.FK__ColorProD__ProIm__5CD6CB2B" FromRole="ColorProDe" ToRole="Color" />
+    <NavigationProperty Name="ProDetail" Relationship="Self.FK__ColorProD__ProDe__5DCAEF64" FromRole="ColorProDe" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Phone" />
+    </Key>
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginStatus" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Customer__UserNa__5165187F" FromRole="Customer" ToRole="User" />
+    <NavigationProperty Name="Orders" Relationship="Self.OrderCus" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="TotalQuantity" Type="Int32" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OrderStatus" Type="Int32" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__49C3F6B7" FromRole="Order" ToRole="OrderDetail" />
+    <NavigationProperty Name="OrderVouchers" Relationship="Self.FK__OrderVouc__Order__66603565" FromRole="Order" ToRole="OrderVoucher" />
+    <NavigationProperty Name="Customers" Relationship="Self.OrderCus" FromRole="Order" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProDeID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__Order__49C3F6B7" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="ProDetail" Relationship="Self.FK__OrderDeta__ProDe__4AB81AF0" FromRole="OrderDetail" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="OrderVoucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="VoucherID" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="VoucherStatus" Type="Boolean" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrderVouc__Order__66603565" FromRole="OrderVoucher" ToRole="Order" />
+    <NavigationProperty Name="Voucher" Relationship="Self.FK__OrderVouc__Vouch__656C112C" FromRole="OrderVoucher" ToRole="Voucher" />
+  </EntityType>
+  <EntityType Name="ProDetail">
+    <Key>
+      <PropertyRef Name="ProDeID" />
+    </Key>
+    <Property Name="SupID" Type="Int32" Nullable="false" />
+    <Property Name="ProID" Type="Int32" Nullable="false" />
+    <Property Name="ProDeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Function" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pin" Type="Int32" />
+    <Property Name="Monitor" Type="Int32" />
+    <Property Name="Camera" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Chip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ram" Type="Int32" />
+    <NavigationProperty Name="ColorProDes" Relationship="Self.FK__ColorProD__ProDe__5DCAEF64" FromRole="ProDetail" ToRole="ColorProDe" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__ProDe__4AB81AF0" FromRole="ProDetail" ToRole="OrderDetail" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ProDetail__ProID__403A8C7D" FromRole="ProDetail" ToRole="Product" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK__ProDetail__Ram__3F466844" FromRole="ProDetail" ToRole="Supplier" />
+    <NavigationProperty Name="StoProDes" Relationship="Self.FK__StoProDe__ProDeI__619B8048" FromRole="ProDetail" ToRole="StoProDe" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProID" />
+    </Key>
+    <Property Name="ProID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CatID" Type="Int32" Nullable="false" />
+    <Property Name="RemainQuantity" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Product__CatID__3C69FB99" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="ProDetails" Relationship="Self.FK__ProDetail__ProID__403A8C7D" FromRole="Product" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="StoProDe">
+    <Key>
+      <PropertyRef Name="StoID" />
+      <PropertyRef Name="ProDeID" />
+    </Key>
+    <Property Name="StoID" Type="Int32" Nullable="false" />
+    <Property Name="ProDeID" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="ProDetail" Relationship="Self.FK__StoProDe__ProDeI__619B8048" FromRole="StoProDe" ToRole="ProDetail" />
+    <NavigationProperty Name="Storage" Relationship="Self.FK__StoProDe__StoID__60A75C0F" FromRole="StoProDe" ToRole="Storage" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="StoID" />
+    </Key>
+    <Property Name="StoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoValue" Type="Double" />
+    <NavigationProperty Name="StoProDes" Relationship="Self.FK__StoProDe__StoID__60A75C0F" FromRole="Storage" ToRole="StoProDe" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupID" />
+    </Key>
+    <Property Name="SupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProDetails" Relationship="Self.FK__ProDetail__Ram__3F466844" FromRole="Supplier" ToRole="ProDetail" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassWord" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="Boolean" />
+    <NavigationProperty Name="Admins" Relationship="Self.FK__Admin__UserName__5812160E" FromRole="User" ToRole="Admin" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__UserNa__5165187F" FromRole="User" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Voucher">
+    <Key>
+      <PropertyRef Name="VoucherID" />
+    </Key>
+    <Property Name="VoucherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderVouchers" Relationship="Self.FK__OrderVouc__Vouch__656C112C" FromRole="Voucher" ToRole="OrderVoucher" />
+  </EntityType>
+  <Association Name="FK__Admin__UserName__5812160E">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__CatID__3C69FB99">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ColorProD__ProIm__5CD6CB2B">
+    <End Role="Color" Type="Self.Color" Multiplicity="1" />
+    <End Role="ColorProDe" Type="Self.ColorProDe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="ColorProDe">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ColorProD__ProDe__5DCAEF64">
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="1" />
+    <End Role="ColorProDe" Type="Self.ColorProDe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProDetail">
+        <PropertyRef Name="ProDeID" />
+      </Principal>
+      <Dependent Role="ColorProDe">
+        <PropertyRef Name="ProDeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__UserNa__5165187F">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__49C3F6B7">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderVouc__Order__66603565">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderVoucher" Type="Self.OrderVoucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderVoucher">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__ProDe__4AB81AF0">
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProDetail">
+        <PropertyRef Name="ProDeID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProDeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderVouc__Vouch__656C112C">
+    <End Role="Voucher" Type="Self.Voucher" Multiplicity="1" />
+    <End Role="OrderVoucher" Type="Self.OrderVoucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voucher">
+        <PropertyRef Name="VoucherID" />
+      </Principal>
+      <Dependent Role="OrderVoucher">
+        <PropertyRef Name="VoucherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__ProID__403A8C7D">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="ProID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProDetail__Ram__3F466844">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupID" />
+      </Principal>
+      <Dependent Role="ProDetail">
+        <PropertyRef Name="SupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StoProDe__ProDeI__619B8048">
+    <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="1" />
+    <End Role="StoProDe" Type="Self.StoProDe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProDetail">
+        <PropertyRef Name="ProDeID" />
+      </Principal>
+      <Dependent Role="StoProDe">
+        <PropertyRef Name="ProDeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StoProDe__StoID__60A75C0F">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="StoProDe" Type="Self.StoProDe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="StoID" />
+      </Principal>
+      <Dependent Role="StoProDe">
+        <PropertyRef Name="StoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderCus">
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DBFPTSHOPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Colors" EntityType="Self.Color" />
+    <EntitySet Name="ColorProDes" EntityType="Self.ColorProDe" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderVouchers" EntityType="Self.OrderVoucher" />
+    <EntitySet Name="ProDetails" EntityType="Self.ProDetail" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="StoProDes" EntityType="Self.StoProDe" />
+    <EntitySet Name="Storages" EntityType="Self.Storage" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
+    <AssociationSet Name="FK__Admin__UserName__5812160E" Association="Self.FK__Admin__UserName__5812160E">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__CatID__3C69FB99" Association="Self.FK__Product__CatID__3C69FB99">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ColorProD__ProIm__5CD6CB2B" Association="Self.FK__ColorProD__ProIm__5CD6CB2B">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="ColorProDe" EntitySet="ColorProDes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ColorProD__ProDe__5DCAEF64" Association="Self.FK__ColorProD__ProDe__5DCAEF64">
+      <End Role="ProDetail" EntitySet="ProDetails" />
+      <End Role="ColorProDe" EntitySet="ColorProDes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__UserNa__5165187F" Association="Self.FK__Customer__UserNa__5165187F">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__49C3F6B7" Association="Self.FK__OrderDeta__Order__49C3F6B7">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderVouc__Order__66603565" Association="Self.FK__OrderVouc__Order__66603565">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderVoucher" EntitySet="OrderVouchers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__ProDe__4AB81AF0" Association="Self.FK__OrderDeta__ProDe__4AB81AF0">
+      <End Role="ProDetail" EntitySet="ProDetails" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderVouc__Vouch__656C112C" Association="Self.FK__OrderVouc__Vouch__656C112C">
+      <End Role="Voucher" EntitySet="Vouchers" />
+      <End Role="OrderVoucher" EntitySet="OrderVouchers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__ProID__403A8C7D" Association="Self.FK__ProDetail__ProID__403A8C7D">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProDetail__Ram__3F466844" Association="Self.FK__ProDetail__Ram__3F466844">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="ProDetail" EntitySet="ProDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StoProDe__ProDeI__619B8048" Association="Self.FK__StoProDe__ProDeI__619B8048">
+      <End Role="ProDetail" EntitySet="ProDetails" />
+      <End Role="StoProDe" EntitySet="StoProDes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StoProDe__StoID__60A75C0F" Association="Self.FK__StoProDe__StoID__60A75C0F">
+      <End Role="Storage" EntitySet="Storages" />
+      <End Role="StoProDe" EntitySet="StoProDes" />
+    </AssociationSet>
+    <AssociationSet Name="OrderCus" Association="Self.OrderCus">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

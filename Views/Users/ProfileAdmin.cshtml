@@ -1,0 +1,123 @@
+﻿@model DO_AN_FPT_SHOP.Models.Admin
+@{
+    ViewBag.Title = "ProfileAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    h2 {
+        margin-left: 45%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        color: #d62e25;
+    }
+
+    table, th, td {
+        border: 0.5px solid darkgray;
+        border-radius: 8px;
+        border-collapse: collapse;
+        padding: 20px;
+    }
+    th {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+    }
+    input {
+        border: 1px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+    }
+
+    table {
+        margin: 0px auto;
+    }
+
+    td img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn-log-out a, .btn-delete-account a, #edit-profile {
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        color: white;
+        background-color: none;
+        border: none;
+    }
+
+    .btn-log-out, .btn-delete-account, #edit-profile {
+        width: fit-content;
+        height: fit-content;
+        border-radius: 8px;
+        background-color: #d62e25;
+        padding: 5px;
+        margin-top: 20px;
+    }
+</style>
+<h2>Profile Admin</h2>
+<form action="@Url.Action("EditProfile")" method="post">
+    <table class="table">
+        <tr>
+            <th>
+                Username
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Admin Name
+            </th>
+            <th>
+                Email
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input style="background-color:lightgray" type="text" value=@Model.UserName readonly name="username" />
+
+            </td>
+            <td>
+                @{
+                    var password = "";
+                    if (Session["Account"] == null) {
+                        password = (Session["Account"] as DO_AN_FPT_SHOP.Models.User).PassWord;
+                    }
+                }
+                <input required id="pw" type="text" value="@password" name="password" />
+                <label for="pw"><img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/edit.png" /></label>
+            </td>
+            <td>
+                <input required id="phonenumber" name="phone" type="text" value="@Model.Phone" />
+                <label for="phonenumber"><img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/edit.png" /></label>
+            </td>
+            <td>
+                <input id="adname" name="name" type="text" value="@Model.AdName" />
+                <label for="adname"><img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/edit.png" /></label>
+            </td>
+            <td>
+                <input id="email" name="email" type="text" value="@Model.Email" />
+                <label for="email"><img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/edit.png" /></label>
+            </td>
+        </tr>
+    </table>
+    <div style="display:flex;width:80%;justify-content:flex-end;">
+        <button id="edit-profile" type="submit">Lưu thay đổi</button>
+        <div style="display:flex;width:70%;justify-content:flex-end; gap:10px">
+
+            <div class="btn-log-out">
+                <a href="@Url.Action("Logout")">Đăng xuất</a>
+                
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<hr />
+
+
+

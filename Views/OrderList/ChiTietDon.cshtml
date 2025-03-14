@@ -1,0 +1,61 @@
+﻿@using DO_AN_FPT_SHOP.Models
+@model List<OrderDetail>
+@{
+    ViewBag.Title = "ChiTietDon";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    h2 {
+        margin-left: 40%;
+        color: #3350b4;
+    }
+    th {
+        color: #b41010;
+    }
+    td{
+        font-weight:600;
+    }
+</style>
+
+<h2>CHI TIẾT ĐƠN HÀNG</h2>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<table class="table">
+    <tr>
+        <th>MÃ ĐƠN HÀNG</th>
+        <th>MÃ CHI TIẾT ĐƠN</th>
+        <th>MÃ CHI TIẾT SẢN PHẨM</th>
+        <th>TÊN SẢN PHẨM</th>
+        <th>ẢNH</th>
+        <th>SỐ LƯỢNG ĐẶT HÀNG</th>
+        <th>TỔNG GIÁ</th>
+        <th></th>
+    </tr>
+    @foreach (var orderDe in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(orDeItem => orderDe.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(orDeItem => orderDe.OrderDetailID)
+            </td>
+            <td>
+                @Html.DisplayFor(orDeItem => orderDe.ProDeID)
+            </td>
+            <td>
+                @Html.DisplayFor(orDeItem=>orderDe.ProDetail.Product.ProName)
+            </td>
+            <td>
+                <img width="100" height="100"src="@Html.DisplayFor(orDeItem=>orderDe.ProDetail.ColorProDes.FirstOrDefault().ProImg)" />
+            </td>
+            <td>
+                @Html.DisplayFor(orDeItem => orderDe.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(orDeItem => orderDe.Price)
+            </td>
+        </tr>
+    }
+</table>

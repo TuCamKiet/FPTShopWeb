@@ -1,0 +1,712 @@
+﻿@using DO_AN_FPT_SHOP.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<ViewModelCateItem>
+
+@{
+Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Điện thoại | Smartphone chính hãng, giá rẻ, trợ giá lên đời</title>
+
+    <link href="~/Content/CategoryPhone7.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+
+<body style=" background-color: #f5f8ff;">
+    <div class="category-container">
+        <div class="trangChu-Dienthoai">
+            <ol>
+                <li><a href="Home.html" title="Trang chủ">Trang chủ / </a> </li>
+                <li><a href="#" title="Laptop">Laptop</a></li>
+            </ol>
+        </div>
+        <div class="category-banner">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/3/638319207158675908_F-C1_1200x300.png" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/1/638317476292540238_F-C1_1200x300.png " class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/1/638317195199194071_F-C1_1200x300@2x.png" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/8/1/638264776256861272_F-C1_1200x300iP13%201.png" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/6/638321846764449015_F-C1_1200x300.png" class="d-block w-100">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="container-prod">
+            <div class="container-prod-info">
+                <div class="container-prod-info-frame">
+                    <div class="container-prod-info-block">
+                        <div class="container-prod-info-title">
+                            Hãng sản xuất
+                        </div>
+                        <div class="container-prod-info-brand">
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new {function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckSupName == null)
+                                    { ViewBag.a = @ViewBag.Style; }
+                                    <button style="@ViewBag.a" id="radio">
+                                    </button>
+                                    Tất cả
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Apple (iPhone)",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Apple (iPhone)")
+                                    { ViewBag.b = @ViewBag.Style; }
+                                    <button style="@ViewBag.b" id="radio">
+                                    </button>
+                                    Apple (iPhone)
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Samsung",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Samsung")
+                                    { ViewBag.c = @ViewBag.Style; }
+                                    <button style="@ViewBag.c" id="radio">
+                                    </button>
+                                    Samsung
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Oppo",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Oppo")
+                                    { ViewBag.d = @ViewBag.Style; }
+                                    <button style="@ViewBag.d" id="radio">
+                                    </button>
+                                    Oppo
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Xiaomi",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Xiaomi")
+                                    { ViewBag.l = @ViewBag.Style; }
+                                    <button style="@ViewBag.l" id="radio">
+                                    </button>
+                                    Xiaomi
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Honor",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Honor")
+                                    { ViewBag.e = @ViewBag.Style; }
+                                    <button style="@ViewBag.e" id="radio">
+                                    </button>
+                                    Honor
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Realme",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Realme")
+                                    { ViewBag.f = @ViewBag.Style; }
+                                    <button style="@ViewBag.f" id="radio">
+                                    </button>
+                                    Realme
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Vivo",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Vivo")
+                                    { ViewBag.g = @ViewBag.Style; }
+                                    <button style="@ViewBag.g" id="radio">
+                                    </button>
+                                    Vivo
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Masstel",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Masstel")
+                                    { ViewBag.i = @ViewBag.Style; }
+                                    <button style="@ViewBag.i" id="radio">
+                                    </button>
+                                    Masstel
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Asus",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Asus")
+                                    { ViewBag.h = @ViewBag.Style; }
+                                    <button style="@ViewBag.h" id="radio">
+                                    </button>
+                                    Asus
+                                </a>
+                            </div>
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName= "Nokia",function=ViewBag.CheckFunction, minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckSupName == "Nokia")
+                                    { ViewBag.j = @ViewBag.Style; }
+                                    <button style="@ViewBag.j" id="radio">
+                                    </button>
+                                    Nokia
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-prod-info-block">
+                        <div class="container-prod-info-title">
+                            Mức giá
+                        </div>
+                        <div style="display:block;" class="container-prod-info-brand">
+                            <div class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPrice == null && ViewBag.CheckMaxPrice == null)
+                                    { ViewBag.p1 = @ViewBag.Style; }
+                                    <button style="@ViewBag.p1" id="radio">
+                                    </button>
+                                    Tất cả
+                                </a>
+                            </div>
+                            <div style="margin-top:10px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new {  supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction, minPrice = 0, maxPrice=1999999,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPrice == 0 && ViewBag.CheckMaxPrice < 2000000)
+                                    { ViewBag.p2 = @ViewBag.Style; }
+                                    <button style="@ViewBag.p2" id="radio">
+                                    </button>
+                                    Dưới 2 triệu
+                                </a>
+                            </div>
+                            <div style="margin-top:10px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new {  supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction, minPrice = 2000000, maxPrice=3999999,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPrice == 2000000 && ViewBag.CheckMaxPrice < 4000000)
+                                    { ViewBag.p3 = @ViewBag.Style; }
+                                    <button style="@ViewBag.p3" id="radio">
+                                    </button>
+                                    Từ 2 - 4 triệu
+                                </a>
+                            </div>
+                            <div style="margin-top:10px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new {  supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction, minPrice = 4000000, maxPrice=6999999,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPrice == 4000000 && ViewBag.CheckMaxPrice < 7000000)
+                                    { ViewBag.p4 = @ViewBag.Style; }
+                                    <button style="@ViewBag.p4" id="radio">
+                                    </button>
+                                    Từ 4 - 7 triệu
+                                </a>
+                            </div>
+                            <div style="margin-top:10px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new {  supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction, minPrice = 7000000, maxPrice=12999999,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPrice == 7000000 && ViewBag.CheckMaxPrice < 13000000)
+                                    { ViewBag.p5 = @ViewBag.Style; }
+                                    <button style="@ViewBag.p5" id="radio">
+                                    </button>
+                                    Từ 7 - 13 triệu
+                                </a>
+                            </div>
+                            <div style="margin-top:10px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new {  supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction, minPrice = 13000000, maxPrice=int.MaxValue,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPrice == 13000000 && ViewBag.CheckMaxPrice <= int.MaxValue)
+                                    { ViewBag.p6 = @ViewBag.Style; }
+                                    <button style="@ViewBag.p6" id="radio">
+                                    </button>
+                                    Trên 13 triệu
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="container-prod-info-block">
+                        <div class="container-prod-info-title">
+                            Tính năng đặc biệt
+                        </div>
+                        <div style="display:block;" class="container-prod-info-brand">
+                            <div style="width:270px" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckFunction == null)
+                                    { ViewBag.f1 = @ViewBag.Style; }
+                                    <button style="@ViewBag.f1" id="radio">
+                                    </button>
+                                    Tất cả
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function="Bảo mật vân tay",minPrice=ViewBag.CheckMinPrice,maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckFunction == "Bảo mật vân tay")
+                                    { ViewBag.f2 = @ViewBag.Style; }
+                                    <button style="@ViewBag.f2" id="radio">
+                                    </button>
+                                    Bảo mật vân tay
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function="Nhận diện khuôn mặt",minPrice=ViewBag.CheckMinPrice,maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckFunction == "Nhận diện khuôn mặt")
+                                    { ViewBag.f3 = @ViewBag.Style; }
+                                    <button style="@ViewBag.f3" id="radio">
+                                    </button>
+                                    Nhận diện khuôn mặt
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function="Chống nước & bụi",minPrice=ViewBag.CheckMinPrice,maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckFunction == "Chống nước & bụi")
+                                    { ViewBag.f4 = @ViewBag.Style; }
+                                    <button style="@ViewBag.f4" id="radio">
+                                    </button>
+                                    Chống nước & bụi
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function="Sạc nhanh",minPrice=ViewBag.CheckMinPrice,maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckFunction == "Sạc nhanh")
+                                    { ViewBag.f5 = @ViewBag.Style; }
+                                    <button style="@ViewBag.f5" id="radio">
+                                    </button>
+                                    Sạc nhanh
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function="Hỗ trợ 5g",minPrice=ViewBag.CheckMinPrice,maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckFunction == "Hỗ trợ 5g")
+                                    { ViewBag.f6 = @ViewBag.Style; }
+                                    <button style="@ViewBag.f6" id="radio">
+                                    </button>
+                                    Hỗ trợ 5g
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function="Sạc không dây",minPrice=ViewBag.CheckMinPrice,maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckFunction == "Sạc không dây")
+                                    { ViewBag.f7 = @ViewBag.Style; }
+                                    <button style="@ViewBag.f7" id="radio">
+                                    </button>
+                                    Sạc không dây
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="container-prod-info-block">
+                        <div class="container-prod-info-title">
+                            Hiệu năng và Pin
+                        </div>
+                        <div style="display:block;" class="container-prod-info-brand">
+                            <div style="width:270px" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPin == null && ViewBag.CheckMaxPin == null)
+                                    { ViewBag.pi1 = @ViewBag.Style; }
+                                    <button style="@ViewBag.pi1" id="radio">
+                                    </button>
+                                    Tất cả
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=0,maxPin=2999,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPin == 0 && ViewBag.CheckMaxPin < 3000)
+                                    { ViewBag.pi2 = @ViewBag.Style; }
+                                    <button style="@ViewBag.pi2" id="radio">
+                                    </button>
+                                    Dưới 3000 mah
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=3000,maxPin=3999,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera})>
+                                    @if (ViewBag.CheckMinPin == 3000 && ViewBag.CheckMaxPin < 4000)
+                                    { ViewBag.pi3 = @ViewBag.Style; }
+                                    <button style="@ViewBag.pi3" id="radio">
+                                    </button>
+                                    Pin từ 3000 - 4000 mah
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=4000,maxPin=4999,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPin == 4000 && ViewBag.CheckMaxPin < 5000)
+                                    { ViewBag.pi4 = @ViewBag.Style; }
+                                    <button style="@ViewBag.pi4" id="radio">
+                                    </button>
+                                    Pin từ 4000 - 5000 mah
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=5000,maxPin=int.MaxValue,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinPin == 5000 && ViewBag.CheckMaxPin <= int.MaxValue)
+                                    { ViewBag.pi5 = @ViewBag.Style; }
+                                    <button style="@ViewBag.pi5" id="radio">
+                                    </button>
+                                    Siêu trâu : trên 5000 mah
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="container-prod-info-block">
+                        <div class="container-prod-info-title">
+                            Màn hình
+                        </div>
+                        <div style="display:block;" class="container-prod-info-brand">
+                            <div style="width:270px" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinMonitor == null && ViewBag.CheckMaxMonitor == null)
+                                    { ViewBag.m1 = @ViewBag.Style; }
+                                    <button style="@ViewBag.m1" id="radio">
+                                    </button>
+                                    Tất cả
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=0,maxMonitor=4, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinMonitor == 0 && ViewBag.CheckMaxMonitor < 5)
+                                    { ViewBag.m2 = @ViewBag.Style; }
+                                    <button style="@ViewBag.m2" id="radio">
+                                    </button>
+                                    Màn hình nhỏ: Dưới 5.0 inch
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:300px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=5,maxMonitor=5, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinMonitor == 5 && ViewBag.CheckMaxMonitor < 6)
+                                    { ViewBag.m3 = @ViewBag.Style; }
+                                    <button style="@ViewBag.m3" id="radio">
+                                    </button>
+                                    Nhỏ gọn vừa tay: Dưới 6.0 inch, tràn viền
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin,minMonitor=6,maxMonitor=int.MaxValue, camera=ViewBag.CheckCamera })>
+                                    @if (ViewBag.CheckMinMonitor == 6 && ViewBag.CheckMaxMonitor <= int.MaxValue)
+                                    { ViewBag.m4 = @ViewBag.Style; }
+                                    <button style="@ViewBag.m4" id="radio">
+                                    </button>
+                                    Trên 6.0 inch
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="height:260px;" class="container-prod-info-block">
+                        <div class="container-prod-info-title">
+                            Camera
+                        </div>
+                        <div style="display:block;height:220px" class="container-prod-info-brand">
+                            <div style="width:270px" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin})>
+                                    @if (ViewBag.CheckCamera == null)
+                                    { ViewBag.c1 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c1" id="radio">
+                                    </button>
+                                    Tất cả
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera="Quay phim slow motion" })>
+                                    @if (ViewBag.CheckCamera == "Quay phim slow motion")
+                                    { ViewBag.c2 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c2" id="radio">
+                                    </button>
+                                    Quay phim slow motion
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera="Ai camera" })>
+                                    @if (ViewBag.CheckCamera == "Ai camera")
+                                    { ViewBag.c3 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c3" id="radio">
+                                    </button>
+                                    Ai camera
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera="Hiệu ứng làm đẹp" })>
+                                    @if (ViewBag.CheckCamera == "Hiệu ứng làm đẹp")
+                                    { ViewBag.c4 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c4" id="radio">
+                                    </button>
+                                    Hiệu ứng làm đẹp
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera="Zoom quang học" })>
+                                    @if (ViewBag.CheckCamera == "Zoom quang học")
+                                    { ViewBag.c5 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c5" id="radio">
+                                    </button>
+                                    Zoom quang học
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera="Chống rung ois" })>
+                                    @if (ViewBag.CheckCamera == "Chống rung ois")
+                                    { ViewBag.c6 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c6" id="radio">
+                                    </button>
+                                    Chống rung ois
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera="Chụp macro" })>
+                                    @if (ViewBag.CheckCamera == "Chụp macro")
+                                    { ViewBag.c7 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c7" id="radio">
+                                    </button>
+                                    Chụp macro
+                                </a>
+                            </div>
+                            <div style="margin-top:10px; width:270px;" class="box-prod-brand">
+                                <a href=@Url.Action("Category", "Categories", new { supName=ViewBag.CheckSupName,function=ViewBag.CheckFunction,minPrice=ViewBag.CheckMinPrice, maxPrice=ViewBag.CheckMaxPrice,minMonitor=ViewBag.CheckMinMonitor,maxMonitor=ViewBag.CheckMaxMonitor,minPin=ViewBag.CheckMinPin,maxPin=ViewBag.CheckMaxPin, camera="Chụp góc rộng" })>
+                                    @if (ViewBag.CheckCamera == "Chụp góc rộng")
+                                    { ViewBag.c8 = @ViewBag.Style; }
+                                    <button style="@ViewBag.c8" id="radio">
+                                    </button>
+                                    Chụp góc rộng
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="boc" style="display:flex;flex-direction:column;">
+                <div class="container-prod-list">
+                    <div class="card-product">
+                        <div class="card-header">
+                            <div class="cdt-head">
+                                <h1 class="cdt-head-title">Điện thoại</h1>
+                                <span>(285 sản phẩm)</span>
+                            </div>
+                        </div>
+                        <div class="card-brand">
+                            <div class="card-brand-container">
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340491304997311_Oppo@2x.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/6/2/637582325361253577_Xiaomi@2x.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/6/29/638236346599640251_Honor.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340491898745716_Realme@2x.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/22/637967768466618842_vivo-icon.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/11/22/637732077455069770_Asus@2x.jpg" />
+                                    </a>
+                                </div>
+                                <div class="card-brand-container-img">
+                                    <a href="#">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340491898901930_Masstel@2x.jpg" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-listbox">
+                        <div class="card-body-listbox">
+                            <div class="listbox-priority">
+                                <div class="card-list-tab">
+                                    <span>Ưu tiên xem:</span>
+                                    <div class="btn-group">
+                                        <ul>
+                                            <li style="border-top-left-radius:5px;border-bottom-left-radius:5px;">
+                                                <a href="#">Bán chạy nhất</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Trả góp 0%</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Giá thấp</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Giá cao</a>
+                                            </li>
+                                            <li style="border-top-right-radius:5px;border-bottom-right-radius:5px;">
+                                                <a href="#">Ưu đãi online</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="hot-sale">
+                                    <div class="select-list-frame">
+                                        <select class="select-list">
+                                            <option id="option1" value="value">Bán chạy nhất</option>
+                                            <option id="option2" value="value">Trả góp 0%</option>
+                                            <option id="option3" value="value">Giá thấp</option>
+                                            <option id="option4" value="value">Giá cao</option>
+                                            <option id="option5" value="value">Ưu đãi online</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @*<span style="margin-left:10px;">
+                                    <a href="#">
+                                        <img style="height:25px;" src="https://s.net.vn/HwCH" />
+                                    </a>
+                                </span>
+                                <span style="margin-left:10px;">
+                                    <a href="#">
+                                        <img style="height:25px;" src="https://s.net.vn/rufh" />
+                                    </a>
+                                </span>*@
+                            </div>
+
+                            <div class="list-box-product">
+                                <div class="list-box-product">
+                                    <div  class="prd-sale">
+
+                                        <!----------------------------------------------------->
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="prd-sale-container">
+                                               <a href="@Url.Action("ProductDetail", "Products", new { id=item.ProID })">
+                                                   <div class="prd-sale-img"> 
+                                                           <span>
+                                                               <img style="width:170px; height:170px" src="@item.ProImg" />
+                                                           </span>
+                                                   </div>
+                                                   <div class="prd-sale-info">
+                                                       <h3 id="name-product"><a href="#" title="@item.ProName">@item.ProName</a></h3>
+                                                       <div class="price-product-spm1">
+                                                           @{ var price = DO_AN_FPT_SHOP.Models.ViewModelProduct.GetPrice(item.Price);}
+                                                           <h3>@price</h3>
+                                                       </div>
+                                                   </div>
+                                                   <div class="prd-sale-config">
+                                                       <div style="margin-top:20px;" class="prd-sale-config-frame">
+                                                           <div class="prd-sale-config-param">
+                                                               <span data-title="CPU">
+                                                                   <img src="https://s.net.vn/bFBN" />@item.Chip
+                                                               </span>
+                                                               <span data-title="Màn hình">
+                                                                   <img src="https://s.net.vn/2ODO" />@item.Monitor inch
+                                                               </span>
+                                                               <span data-title="RAM">
+                                                                   <img src="https://s.net.vn/THNT" />@item.Ram GB
+                                                               </span>
+                                                               <span data-title="Ổ cứng">
+                                                                   <img src="https://s.net.vn/7D1I" />@item.Storage GB
+                                                               </span>
+                                                           </div>
+                                                           <div class="config-img">
+                                                               <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                                           </div>
+                                                           <div class="config-text">
+                                                               Giảm giá 5% tối đa 200,000 qua ví Kredivo
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="see-more">
+                                <div class="see-more-frame">
+                                    @*<button class="btn-see-more">Xem thêm</button>*@
+                                    <div class="MenuPage">@Html.PagedListPager(Model,page=>Url.Action("Category", new {page=page}))</div>
+                                    <style>
+                                        .MenuPage li {
+                                            color: black;
+                                            float: left;
+                                            padding: 8px 16px;
+                                            text-decoration: none;
+                                            border: 1px solid #ddd;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="description-show">
+                    <div class="description_data">
+                        <p style="text-align:justify">
+                            <strong>
+                                Hãy cùng tìm hiểu về lịch sử và phát triển của điện thoại thông minh, các tính năng và thông số kỹ thuật quan trọng mà bạn cần biết khi nếu muốn mua một chiếc điện thoại phù hợp. FPT Shop cũng sẽ cung cấp cho bạn bảng thông số kỹ thuật và các thương hiệu phổ biến nhất đang kinh doanh để giúp bạn so sánh các sản phẩm và tìm ra chiếc điện thoại phù hợp nhất cho mình.
+                            </strong>
+                        </p>
+                        <p style="text-align:justify;">
+                            <strong>
+                                <img style="width: 772px; height: 515px; margin-top: 12px; border-radius:8px;" src="https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/hongtt34/1(1).png" />
+                            </strong>
+                        </p>
+                        <h2 style="text-align:justify;font-size:20px;margin-bottom:20px;">
+                            <b>Lịch sử phát triển của điện thoại thông minh</b>
+                        </h2>
+                        <h3 style="text-align: justify; font-size: 16px; margin-bottom: 15px;">
+                            <b>Ngày đầu tiên - Sự ra đời của điện thoại di động</b>
+                        </h3>
+                        <p style="text-align:justify">
+                            Vào ngày 10 tháng 3 năm 1876, nhà khoa học người Scotland - Alexander Graham Bell đã được cấp bằng sáng chế cho việc phát minh ra điện thoại. Sự kiện này đã mở ra cách mạng viễn thông và gắn kết con người từ những nơi xa xôi thông qua giọng nói.
+                        </p>
+                        <p style="text-align:justify">
+                            Trong giai đoạn đầu của lịch sử điện thoại, các máy điện thoại còn rất lớn và nặng, chỉ có thể được sử dụng tại các địa điểm cố định và có giới hạn về phạm vi. Cuộc đua đầu tiên trong việc phát triển điện thoại di động đã bắt đầu vào những năm 1940 và 1950 khi các nhà nghiên cứu và kỹ sư trên khắp thế giới bắt đầu tìm cách giảm kích thước và trọng lượng của điện thoại để có thể di động hơn.
+                        </p>
+                        <p style="text-align:justify">
+                            <img style="width:772px;height:515px;border-radius:8px;" src="https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/hongtt34/3(1).png" />
+                        </p>
+                        <p style="text-align:justify">
+                            Các điểm đáng chú ý trong giai đoạn này bao gồm việc ra mắt dịch vụ di động đầu tiên vào năm 1946 tại Hoa Kỳ, và việc giới thiệu các máy di động đầu tiên vào cuối những năm 1970 và đầu những năm 1980.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var heightLBP = 1650, heightCLB = 1880, heightCPL = 2000;
+    document.getElementsByClassName("btn-see-more")[0].onclick = function () {
+        heightLBP += 550;
+        heightCLB += 550;
+        heightCPL += 550;
+        document.getElementsByClassName("list-box-product")[0].setAttribute("style", "height:" + heightLBP + "px;");
+        document.getElementsByClassName("card-listbox")[0].setAttribute("style", "height:" + heightCLB + "px;");
+        document.getElementsByClassName("container-prod-list")[0].setAttribute("style", "height:" + heightCPL + "px;");
+    }
+</script>
+
+

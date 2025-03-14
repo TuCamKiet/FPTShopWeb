@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DO_AN_FPT_SHOP.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    h2 {
+        margin-left: 35%;
+        color: #3350b4;
+    }
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+</style>
+<h1 id="admin-title">ADMIN</h1>
+<h2>QUẢN LÝ DANH SÁCH SẢN PHẨM</h2>
+<p> @Html.ActionLink("Thêm mới", "TaoSanPham", null, new { @class = "btn btn-sm btn-dark" })</p>
+<table class="table">
+    <tr>
+        <th>TÊN SẢN PHẨM</th>
+        <th>CHỨC NĂNG</th>
+        <th>PIN</th>
+        <th>MÀN HÌNH</th>
+        <th>CAMERA</th>
+        <th>CHIP</th>
+        <th>RAM</th>
+        <th>HÃNG</th>
+        <th>MÀU SẮC</th>
+        <th>HÌNH ẢNH SẢN PHẨM</th>
+        <th>STORAGE</th>
+        <th>GIÁ</th>
+        <th>SỐ LƯỢNG TỒN KHO</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().Function)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().Pin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().Monitor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().Camera)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().Chip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().Ram)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().Supplier.SupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().ColorProDes.FirstOrDefault().Color.ColorName)
+            </td>
+            <td>
+                <img style="max-width:100px;max-height:100px" src="@Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().ColorProDes.FirstOrDefault().ProImg)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().StoProDes.FirstOrDefault().Storage.StoValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProDetails.FirstOrDefault().StoProDes.FirstOrDefault().Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemainQuantity)
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.ProID }, new { @class = "btn btn-sm btn-info" })
+                @Html.ActionLink("Sửa", "ChinhSuaSanPham", new { id = item.ProID }, new { @class = "btn btn-sm btn-success" })
+                @Html.ActionLink("Xóa", "XoaSanPham", new { id = item.ProID }, new { @class = "btn btn-sm btn-danger" })
+
+            </td>
+        </tr>
+    }
+</table>
+
+

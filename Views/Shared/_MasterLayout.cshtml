@@ -1,0 +1,381 @@
+﻿@using DO_AN_FPT_SHOP.Models
+@using System.Linq
+@using DO_AN_FPT_SHOP.Controllers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/MasterLayOutStyle7.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header class="fs-header">
+        <div class="f-hdtop">
+            <div class="f-wrap">
+                <div class="f-logo">
+                    <div class="f-logo-frame">
+                        <a class="logo-img" href="/Home/index"><img src="https://i.gyazo.com/d3209e2122472de851c534c609a7884b.png" /></a>
+                    </div>
+                </div>
+                <div class="fs-search">
+                    <div class="fs-search-frame">
+                        <form style="display:flex" action="@Url.Action("Search", "Products")" method="post">
+                            <input type="text" id="key" placeholder="Nhập tên điện thoại, máy tính, phụ kiện... cần tìm" maxlength="50" name="key" />
+                            <button type="submit" title="Tìm kiếm" class="btn-search"><img src="https://static-00.iconduck.com/assets.00/search-icon-2044x2048-psdrpqwp.png" alt="Alternate Text" /></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="fs-hdmn-frame">
+                    <ul class="fs-hdmn">
+                        <li>
+                            <div class="dropdown">
+                                <a href="#">
+                                    <div class="hdmn-img"><img style="margin-left:30px;" src="https://cdn-icons-png.flaticon.com/512/54/54702.png" alt="Alternate Text" /></div>
+
+                                    <span>Thông tin hay</span>
+                                    <div class="dropdown-content">
+                                        <p>Tin mới</p>
+                                        <p>Khuyến mãi</p>
+                                        <p>Điện máy - gia dụng</p>
+                                        <p>Thủ thuật</p>
+                                        <p>For Gamers</p>
+                                        <p>Video hot</p>
+                                        <p>Đánh giá - tư vấn</p>
+                                        <p>App & Game</p>
+                                        <p>Sự kiện</p>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div title="Thanh toán & tiện ích" class="hdmn-img"> <img style="margin-left:55px;" src="https://cdn-icons-png.flaticon.com/512/2977/2977924.png" alt="Alternate Text" /></div>
+                                <span>Thanh toán & tiện lợi</span>
+                            </a>
+                        </li>
+                        <li style="width:115px">
+                            <a id="login-logout" href="@Url.Action("Login", "Users")">
+                                <div style="display:flex;flex-direction:column;align-items:center; margin-top:1.5px">
+                                    <div title="Tài khoản của tôi" class="hdmn-img">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/3033/3033143.png" alt="Alternate Text" />
+                                    </div>
+                                    @{
+                                        var account = "Tài khoản";
+
+                                        if (Session["Account"] != null)
+                                        {
+                                            account = (Session["Account"] as DO_AN_FPT_SHOP.Models.User).UserName;
+                                        }
+                                    }
+                                    <span id="account">@account</span>
+                                </div>
+                            </a>
+                            <script>
+
+                                window.onload = function () {
+                                    if (document.getElementById("account").innerHTML == "Tài khoản của tôi") {
+                                        document.getElementById("login-logout").setAttribute("href", "@Url.Action("Login", "Users")");
+                                    }
+                                    else{
+                                        document.getElementById("login-logout").setAttribute("href", "@Url.Action("Profile", "Users")");
+                                    }
+                                }
+                            </script>
+                        </li>
+
+
+                        <li>
+                            <a id="giohang" href="@Url.Action("Cart", "OrderList")">
+                                <div style="position:relative">
+                                    @{
+                                        if (Session["Account"] != null)
+                                        {
+                                            Session["CountCart"] = OrderListController.GetTotalQuan((Session["Account"] as User).UserName);
+                                        }
+
+                                    }
+                                    @if (Session["Account"] != null && Session["CountCart"] != null)
+                                    {
+                                        <div style="text-align:center;z-index:2;position:absolute;right:0;background-color:red;border-radius:50%;width:18px;height:18px">
+                                            @if ((int)Session["CountCart"] != 0 && (int)Session["CountCart"] != null)
+                                            {@Html.Raw(Session["CountCart"])}
+                                        </div>
+                                    }
+                                    <div class="hdmn-img"> <img style="margin-left:10px;" src="https://img.pikbest.com/png-images/20190826/trolley-shopping-cart-icon-png-free-illustration_2604874.png!bw700" alt="Alternate Text" /></div>
+                                    <span>
+                                        Giỏ hàng
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="f-hdmenu">
+            <div class="f-wrap" style="height:40px;">
+                <nav class="list-product">
+                    <ul class="all-products">
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://as1.ftcdn.net/v2/jpg/01/98/91/60/1000_F_198916049_Fdnb49GbwX3A8Y037i03Oo7xR7s6FecL.jpg" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="@Url.Action("Category","Categories",new {cateid=1})"><span>ĐIỆN THOẠI</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://t3.ftcdn.net/jpg/02/09/95/34/360_F_209953449_xlfFzL6YDU8r2kKsMqDhyltUCjfGgDzT.webp" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="#"><span>LAPTOP</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://www.shutterstock.com/image-illustration/tablet-icon-basic-plain-set-600w-283018616.jpg" style="height:20px;width:20px; margin-top:3px" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="#"><span>MÁY TÍNH BẢNG</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFhvYvnDjr3qYAMcICqzYkec62Y03O2YGwmg&usqp=CAU" style="height: 15px;width:15px; margin-top:5px" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="#"> <span>&nbsp APPLE</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://static.vecteezy.com/system/resources/previews/000/569/443/original/desktop-computer-icon-vector.jpg" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <div class="dropdown">
+                                    <a href="#">
+                                        <span>PC - LINH KIỆN</span>
+                                        <div class="dropdown-content">
+                                            <p>
+                                                PC
+                                            </p>
+                                            <p>Linh kiện</p>
+                                            <p>Màn hình</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://png.pngtree.com/png-vector/20190329/ourmid/pngtree-vector-headphones-icon-png-image_889471.jpg" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="#"> <span>PHỤ KIỆN</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://img.myloview.com/canvas-prints/swap-icon-400-245109920.jpg" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="#"><span>MÁY CŨ GIÁ RẺ</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://png.pngtree.com/png-clipart/20190630/original/pngtree-vector-house-icon-png-image_4173696.jpg" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="#"><span>HÀNG GIA DỤNG</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-product">
+                                <a href="#"><img src="https://png.pngtree.com/png-vector/20190420/ourlarge/pngtree-vector-sim-icon-png-image_964562.jpg" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <a href="#"><span>SIM & THẺ</span></a>
+                            </div>
+                        </li>
+                        <li>
+
+                            <div class="icon-product">
+                                <a href="#"><img src="https://img.myloview.com/posters/white-discount-vector-icon-on-black-background-modern-flat-discount-from-customer-service-concept-vector-sign-symbol-can-be-use-for-web-mobile-and-logo-700-170990006.jpg" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="typeProduct">
+                                <div class="dropdown">
+                                    <a href="#">
+                                        <span>KHUYẾN MÃI</span>
+                                        <div class="dropdown-content">
+                                            <p>Thông tin trao thưởng</p>
+                                            <p>Tất cả khuyến mại</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="root" style="height:fit-content">
+        @RenderBody()
+    </div>
+    <footer class="fs-footer">
+        <div class="fs-footer-top">
+            <div class="fs-footer-top-frame">
+                <div class="list-info-footer">
+                    <ul class="info-intro">
+                        <li><a id="info" target="_blank" href="#">Giới thiệu về công ty</a></li>
+                        <li> <a id="info" target="_blank" href="#">Chính sách bảo mật</a></li>
+                        <li> <a id="info" target="_blank" href="#">Quy chế hoạt động</a></li>
+                        <li> <a id="info" target="_blank" href="#">Kiểm tra hóa đơn điện tử</a></li>
+                        <li> <a id="info" target="_blank" href="#">Tra cứu thông tin bảo hành</a></li>
+                        <li> <a id="info" target="_blank" href="#">Câu hỏi thường gặp mua hàng</a></li>
+                    </ul>
+                    <div class="ft-wrap">
+                        <div class="ft-item">
+                            <img src="https://fptshop.com.vn/Content/v4/images/ft-img1.png" id="cth1" />
+                        </div>
+                        <div class="ft-item">
+                            <img src="https://fptshop.com.vn/Content/v4/images/ft-img2.png" id="cth2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-info-footer">
+                    <ul class="info-intro">
+                        <li><a id="info" target="_blank" href="#">Tin tuyển dụng</a></li>
+                        <li> <a id="info" target="_blank" href="#">Tin khuyến mãi</a></li>
+                        <li> <a id="info" target="_blank" href="#">Hướng dẫn mua online</a></li>
+                        <li> <a id="info" target="_blank" href="#">Hướng dẫn mua trả góp</a></li>
+                        <li> <a id="info" target="_blank" href="#">Chính sách trả góp</a></li>
+                        <li> <a id="info" target="_blank" href="#">Chính sách thu nhập và <br />xử lý dữ liệu cá nhân</a></li>
+                    </ul>
+                    <p style=" margin-left: 15px;" class="fs-text">Chứng nhận : </p>
+                    <div class="ft-wrap">
+                        <div class="ft-item">
+                            <img src="https://fptshop.com.vn/Content/v4/images/ft-img3.png" id="dmca" />
+                        </div>
+                        <div class="ft-item">
+                            <img src="https://fptshop.com.vn/Content/v4/images/ft-img4.png" id="dv" />
+                        </div>
+                        <div class="ft-item">
+                            <img src="https://fptshop.com.vn/Content/v4/images/ft-img5.png" id="thvn" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="list-info-footer">
+                    <ul class="info-intro">
+                        <li><a id="info" target="_blank" href="#">Hệ thống cửa hàng</a></li>
+                        <li> <a id="info" target="_blank" href="#">Chính sách đổi trả</a></li>
+                        <li> <a id="info" target="_blank" href="#">Hệ thống bảo hành</a></li>
+                        <li> <a id="info" target="_blank" href="#">Giới thiệu máy đổi trả</a></li>
+                    </ul>
+                </div>
+                <div style="height:330px;" class="list-info-footer">
+                    <ul class="support">
+                        <li>
+                            <p class="fs-text">Tư vấn mua hàng (Miễn phí)</p>
+                            <a class="phone-number" href="#">1800 6601</a>
+                            <span>(Nhánh 1)</span>
+                        </li>
+                        <li>
+                            <p class="fs-text">Hỗ trợ kỹ thuật</p>
+                            <a class="phone-number" href="#">1800 6601</a>
+                            <span>(Nhánh 2)</span>
+                        </li>
+                        <li>
+                            <p class="fs-text">Góp ý, khiếu nại (8h00-22h00)</p>
+                            <a class="phone-number" href="#">1800 6616</a>
+                        </li>
+                    </ul>
+                    <div style="margin-left:15px" class="fs-text">Hỗ trợ thanh toán :</div>
+                    <div class="ft-wrap-payment">
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img6.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img7.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img8.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-imgamex.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img9.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img11.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img12.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img10.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img15.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img15.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img13.png" />
+                        </div>
+                        <div class="ft-item">
+                            <img class="ft-pay" src="https://fptshop.com.vn/Content/v4/images/ft-img14.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="list-info-footer">
+                    <div class="connect">
+                        <p style="margin-left:15px;font-size:15px" class="fs-text">Kết nối với chúng tôi:</p>
+                        <a class="fb-img" href="#"><img src="https://fptshop.com.vn/Content/v4/images/icon-facebook.png" /></a>
+                        <a class="zalo-img" href="#"><img src="https://fptshop.com.vn/Content/v4/images/icon-zalo.png" /></a>
+                    </div>
+                    <div class="website-and-shop">
+                        <p class="ft-tit">Website cùng FPT Retail:</p>
+                        <p class="ft-tit-shop">Cửa hàng quyền lực bởi Apple:</p>
+                        <div class="ft-shop-logo">
+                            <a href="#"><img src="https://fptshop.com.vn/Content/v4/images/ft-img16.png" /></a>
+                        </div>
+                        <p class="ft-tit-shop">Trung tâm bảo hành ủy quyền Apple: </p>
+                        <div class="ft-center-logo">
+                            <a href="#"><img src="https://fptshop.com.vn/Content/v4/images/ft-img17.png" /></a>
+                        </div>
+                        <p class="ft-tit-shop">Chuỗi nhà thuốc: </p>
+                        <div class="ft-medical-logo">
+                            <a href="#"><img src="https://fptshop.com.vn/Content/v4/images/ft-img18.png" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fs-footer-bottom">
+            <div class="fs-footer-bottom-frame">
+                <p>© 2007 - 2023 Công Ty Cổ Phần Bán Lẻ Kỹ Thuật Số FPT / Địa chỉ: 261 - 263 Khánh Hội, P2, Q4, TP. Hồ Chí Minh / GPĐKKD số 0311609355 do Sở KHĐT TP.HCM cấp ngày 08/03/2012. GP số 47/GP-TTĐT do sở TTTT TP HCM cấp ngày 02/07/2018. Điện thoại: <a href="#">(028) 7302 3456</a>. Email: <a href="#">fptshop@fpt.com</a>.Chịu trách nhiệm nội dung: Nguyễn Trịnh Nhật Linh</p>
+            </div>
+        </div>
+    </footer>
+
+    @*<div id="login">@{ Html.RenderPartial("~/Views/Customers/PhoneNumber.cshtml");}</div>*@
+</body>
+
+</html>
+
+<script>
+    document.getElementById("giohang").onclick = function () {
+        document.getElementById("login").toggleAttribute("hidden");
+    }
+</script>

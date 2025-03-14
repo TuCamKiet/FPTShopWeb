@@ -1,0 +1,1787 @@
+﻿@model IEnumerable<DO_AN_FPT_SHOP.Models.ViewModelCateItem>
+@{
+    ViewBag.Title = "Fptshop.com.vn";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link rel="stylesheet" href="~/Content/HomeStyle2.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <article>
+        <div class="box-bg">
+
+            <div class="bg">
+                <img id="img-main" src="https://images.fpt.shop/unsafe/fit-in/filters:quality(80):fill(transparent)/fptshop.com.vn/Uploads/Originals/2023/10/6/638321919969312099_desk-header-1010.png" />
+            </div>
+        </div>
+        <section class="container-slide">
+            <div class="box-left">
+                <div class="slide">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/30/638317081523621205_F-H1_800x300.png" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/21/638309054164874086_F-H1_800x300.png" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/2/638318536191197792_H1_800x300.png" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/4/638320408894730869_F-H1_800x300.png" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/1/638317171367090773_F-H1_800x300.png" class="d-block w-100">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-right">
+                <a class="box-right-a-H2_may-cu" href="/">
+                    <img title="H2 Máy cũ" src="https://images.fpt.shop/unsafe/fit-in/385x100/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/8/21/638282131957313690_H2_385x100.png">
+                </a>
+
+                <a class="box-right-a-H2_may-cu" href="/">
+                    <img title="H2 iPhone 13" src="https://images.fpt.shop/unsafe/fit-in/385x100/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/8/1/638264776251597698_H2_385x100iP13%201.png">
+                </a>
+
+                <div class="box-right-text">
+                    <div class="container-sale">
+                        <h3>Tin khuyến mãi</h3>
+                    </div>
+
+                    <div class="margin-img1-box-right">
+                        <a href="#">
+                            <div class="box-sale-img1">
+                                <div class="span-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/70x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/images/2015/PhuongMT5/140x80(2).png">
+                                </div>
+                                <div class="box-sale-text">
+                                    <span>FPT Shop giảm ngay 250K qua VNPAY-QR</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="margin-img1-box-right">
+                        <a href="#">
+                            <div class="box-sale-img1">
+                                <div class="span-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/70x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/images/2015/PhuongMT5/140x80(1).png">
+                                </div>
+                                <div class="box-sale-text">
+                                    <span>Mua PC và màn hình giảm đến 40%</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-products">
+            <div class="list-box-products">
+                <div class="box-products">
+                    <a class="box1-products" href="@Url.Action("Category","Categories",new {cateid=1})">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2015/img-dienthoai-desk.png">
+                        </div>
+                        <div class="title-box-products">Điện thoại</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-laptop.png">
+                        </div>
+                        <div class="title-box-products">Laptop</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-pc.png">
+                        </div>
+                        <div class="title-box-products">PC</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2015/icon-mtb-desk.png">
+                        </div>
+                        <div class="title-box-products">Máy tính bảng</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-smart.png">
+                        </div>
+                        <div class="title-box-products">Thiết bị thông minh</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-houseware.png">
+                        </div>
+                        <div class="title-box-products">Gia dụng</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2015/img-apple-desk.png">
+                        </div>
+                        <div class="title-box-products">Apple</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2015/destop-ic-samsung.png">
+                        </div>
+                        <div class="title-box-products">Samsung</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-smartwatch.png">
+                        </div>
+                        <div class="title-box-products">Đồng hồ thông minh</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-accessories.png">
+                        </div>
+                        <div class="title-box-products">Phụ kiện</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-screen.png">
+                        </div>
+                        <div class="title-box-products">Màn hình</div>
+                    </a>
+                </div>
+
+                <div class="box-products">
+                    <a class="box1-products" href="#">
+                        <div class="img-box1-products">
+                            <img id="box1-products-img" src="https://images.fpt.shop/unsafe/fit-in/60x60/filters:quality(90):fill(transparent)/fptshop.com.vn/Uploads/images/2022/iconcate/icon-tcdm.png">
+                        </div>
+                        <div class="title-box-products">Máy cũ</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="banner-laptop">
+            <div class="banner-laptop-frame">
+                <a href="#"><img src="https://images.fpt.shop/unsafe/fit-in/1200x100/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/7/638322668830536651_H7_1200x100.png" title="H7_Sale online" /></a>
+            </div>
+        </div>
+        <section class="box-slide-product">
+            <div class="box-slide-container">
+                <div class="title">
+                    <img src="https://static.vecteezy.com/system/resources/previews/011/012/313/non_2x/simple-fire-flame-symbol-illustration-isolated-on-white-background-free-vector.jpg" alt="Alternate Text" />
+                    <h2 class="hot-discount">KHUYẾN MÃI HOT</h2>
+                </div>
+                <div style="overflow:hidden" class="prd-sale">
+                    @foreach (var item in Model)
+                    {
+                        <div class="prd-sale-container">
+                            <a href="@Url.Action("ProductDetail", "Products", new { id=item.ProID })">
+                                <div class="prd-sale-img">
+                                    <span>
+                                        <img style="width:170px; height:170px" src="@item.ProImg" />
+                                    </span>
+                                </div>
+                                <div class="prd-sale-info">
+                                    <h3 id="name-product"><a href="#" title="@item.ProName">@item.ProName</a></h3>
+                                    <div class="price-product-spm1">
+                                        @{ var price = DO_AN_FPT_SHOP.Models.ViewModelProduct.GetPrice(item.Price);}
+                                        <h3>@price</h3>
+                                    </div>
+                                </div>
+                                <div class="prd-sale-config">
+                                    <div style="margin-top:20px;" class="prd-sale-config-frame">
+                                        <div class="prd-sale-config-param">
+                                            <span data-title="CPU">
+                                                <img src="https://s.net.vn/bFBN" />@item.Chip
+                                            </span>
+                                            <span data-title="Màn hình">
+                                                <img src="https://s.net.vn/2ODO" />@item.Monitor inch
+                                            </span>
+                                            <span data-title="RAM">
+                                                <img src="https://s.net.vn/THNT" />@item.Ram GB
+                                            </span>
+                                            <span data-title="Ổ cứng">
+                                                <img src="https://s.net.vn/7D1I" />@item.Storage GB
+                                            </span>
+                                        </div>
+                                        <div class="config-img">
+                                            <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                        </div>
+                                        <div class="config-text">
+                                            Giảm giá 5% tối đa 200,000 qua ví Kredivo
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+        <div class="banner-html">
+            <div class="banner-html-frame">
+                <ul class="btn-list">
+                    <li class="danh-sach-ip-15">
+                        <a href="#">
+                            <div class="list-img">
+                                <img src="https://images.fpt.shop/unsafe/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/21/638309134523588697_item.png" />
+                            </div>
+                        </a>
+                    </li>
+                    <li class="danh-sach-ip-15">
+                        <a href="#">
+                            <div class="list-img">
+                                <img src="https://images.fpt.shop/unsafe/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/29/638315781971010369_item-1.png" />
+                            </div>
+                        </a>
+                    </li>
+                    <li class="danh-sach-ip-15">
+                        <a href="#">
+                            <div class="list-img">
+                                <img src="https://images.fpt.shop/unsafe/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/29/638315781971010369_item-2.png" />
+                            </div>
+                        </a>
+                    </li>
+                    <li class="danh-sach-ip-15">
+                        <a href="#">
+                            <div class="list-img">
+                                <img src="https://images.fpt.shop/unsafe/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/29/638315781969916361_item-3.png" />
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="bn-discount-img">
+                    <div class="bn-discount-img-frame">
+                        <a href="#"><img src="https://images.fpt.shop/unsafe/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/28/638315412186192831_button.png" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="good-deal">
+            <div class="good-deal-frame">
+                <div class="good-deal-frame-padding">
+                    <div class="title">
+                        <h2>DEAL NGON - GIÁ LUÔN RẺ</h2>
+                        <div class="title-img">
+                            <a href="#">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/1168x97/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/29/638316099654999997_H7-%201200x100.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-brand">
+                        <li class="brand-item">
+                            <div class="item-img">
+                                <a href="#"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/29/638316099654927283_brand-banner-1.png" /></a>
+                            </div>
+                        </li>
+                        <li class="brand-item">
+                            <div class="item-img">
+                                <a href="#"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/29/638316099654929937_brand-banner.png" /></a>
+                            </div>
+                        </li>
+                        <li class="brand-item">
+                            <div class="item-img">
+                                <a href="#"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/29/638316099655248152_brand-banner-2.png" /></a>
+                            </div>
+                        </li>
+                        <li class="brand-item">
+                            <div class="item-img">
+                                <a href="#"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/2/638318341237136156_brand-banner-desk-4.png" /></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="pc-e-power-picture">
+            <div class="picture-frame">
+                <img title="H5 Redmi Note 12 T10" src="https://images.fpt.shop/unsafe/fit-in/1200x200/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/7/638322836375130709_H5-1200x200.png" />
+            </div>
+        </div>
+
+        <section class="container-list-smp">
+            <div class="box-list-smp">
+                <div class="title-view-smp">
+                    <div class="title-smp">
+                        <h2>ĐIỆN THOẠI NỔI BẬT</h2>
+                    </div>
+                    <div class="view-all-smp">
+                        <a href="@Url.Action("Category","Categories")">Xem tất cả</a>
+                    </div>
+                </div>
+                <div style="overflow: hidden; height: 1110px" class="prd-sale">
+                    @foreach (var item in Model)
+                    {
+                        <div class="prd-sale-container">
+                            <a href="@Url.Action("ProductDetail", "Products", new { id=item.ProID })">
+                                <div class="prd-sale-img">
+                                    <span>
+                                        <img style="width:170px; height:170px" src="@item.ProImg" />
+                                    </span>
+                                </div>
+                                <div class="prd-sale-info">
+                                    <h3 id="name-product"><a href="#" title="@item.ProName">@item.ProName</a></h3>
+                                    <div class="price-product-spm1">
+                                        @{ var price = DO_AN_FPT_SHOP.Models.ViewModelProduct.GetPrice(item.Price);}
+                                        <h3>@price</h3>
+                                    </div>
+                                </div>
+                                <div class="prd-sale-config">
+                                    <div style="margin-top:20px;" class="prd-sale-config-frame">
+                                        <div class="prd-sale-config-param">
+                                            <span data-title="CPU">
+                                                <img src="https://s.net.vn/bFBN" />@item.Chip
+                                            </span>
+                                            <span data-title="Màn hình">
+                                                <img src="https://s.net.vn/2ODO" />@item.Monitor inch
+                                            </span>
+                                            <span data-title="RAM">
+                                                <img src="https://s.net.vn/THNT" />@item.Ram GB
+                                            </span>
+                                            <span data-title="Ổ cứng">
+                                                <img src="https://s.net.vn/7D1I" />@item.Storage GB
+                                            </span>
+                                        </div>
+                                        <div class="config-img">
+                                            <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                        </div>
+                                        <div class="config-text">
+                                            Giảm giá 5% tối đa 200,000 qua ví Kredivo
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <section class="hot-laptop">
+            <div class="hot-laptop-frame">
+                <div class="title">
+                    <div class="title-lap">
+                        <h2>LAPTOP BÁN CHẠY</h2>
+                    </div>
+                    <div class="view-all-btn">
+                        <a href="#">Xem tất cả</a>
+                    </div>
+                </div>
+                <div class="prd-sale">
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/11/12/637407970062806725_mba-2020-gold-dd.png" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 3.800.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="MacBook Air 13 inch M1 2020 8CPU 7GPU 8GB/256GB">MacBook Air 13 inch M1 2020 8CPU 7GPU 8GB/256GB</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    19.990.000₫
+                                    <div class="newPrice-bar" style="width:87%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>22.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div style="margin-top:20px;" class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />13.3 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />M1
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 256 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />Apple M1
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />1.29 kg
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+                                </div>
+                                <div class="config-text">
+                                    Giảm 200.000đ qua VNPAY
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/3/3/638134647806744549_hp-240-g9-bac-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="HP 245 G9 R5 5625U (6L1N8PA)">HP 245 G9 R5 5625U (6L1N8PA) </a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    10.990.000₫
+                                    <div class="newPrice-bar" style="width:55%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>13.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:110px" class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />14.0 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Ryzen 5
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB (1 thanh 8GB)
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 256 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />AMD Radeon Graphics
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />1.47 kg
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+                                    <img style="margin-left:0px" src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/19/638175171985162982_asus-vivobook-e1404fa-nk186w-r5-7520u-den-dd-moi.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 1.500.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Laptop Asus Vivobook E1404FA-NK186W R5-7520U">Laptop Asus Vivobook E1404FA-NK186W R5-7520U</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    13.990.000₫
+                                    <div class="newPrice-bar" style="width:82%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>14.490.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div style="margin-top:20px;" class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />14.0 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Ryzen 5
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />16 GB
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 512 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />AMD Radeon Graphics
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />1300 g
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+
+                                </div>
+                                <div class="config-text">
+                                    Giảm 250.000đ qua VNPAY
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/11/638168337649091937_lenovo-ideapad-3-15itl6-i5-1155g7-xam-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 1.800.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Lenovo IdeaPad 3 15ITL6 I5 1155G7 (82H803RWVN)">Lenovo IdeaPad 3 15ITL6 I5 1155G7 (82H803RWVN)</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    18.990.000₫
+                                    <div class="newPrice-bar" style="width:90%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>20.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px;" class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:110px" class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />15.6 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Core i5
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />16 GB (2 thanh 8GB)
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 512 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />Intel Iris Xe Graphics
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />1.65 kg
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+
+                                </div>
+                                <div class="config-text">
+                                    Giảm 250.000đ qua VNPAY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/2/16/638121568991277911_msi-gaming-gf63-thin-11-den-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 1.500.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="MSI Gaming GF63 Thin 11SC-664VN i5-11400H">MSI Gaming GF63 Thin 11SC-664VN i5-11400H</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    14.990.000₫
+                                    <div class="newPrice-bar" style="width:90%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>16.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px;" class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:115px;" class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />15.6 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Core i5
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 512 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />NVIDIA GeForce GTX 1650 4GB
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />1.86 kg
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+                                    <img style="margin-left:0px" src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div class="config-text">
+                                    Giảm 250.000đ qua VNPAY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/8/24/638284697135459130_hp-pavilion-aero-13-bac-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.000.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Laptop HP Pavilion Aero 13-be2098AU R7-7735U (8C5K5PA)">Laptop HP Pavilion Aero 13-be2098AU R7-7735U (8C5K5PA)</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    19.990.000₫
+                                    <div class="newPrice-bar" style="width:90%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>21.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px;" class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:115px;" class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />13.3 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Ryzen 7
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />16 GB(1 thanh 16GB)
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 512 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />AMD Radeon Graphics
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />1 kg
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+
+                                </div>
+                                <div class="config-text">
+                                    Giảm 250.000đ qua VNPAY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/11/18/637728602789371579_acer-swift-3-sf314-43-r4x3-r5-5500u-bac-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 6.000.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Laptop Acer Swift 3 SF314-43-R4X3 R5 5500U (NX.AB1SV.004)">Laptop Acer Swift 3 SF314-43-R4X3 R5 5500U (NX.AB1SV.004)</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    14.990.000₫
+                                    <div class="newPrice-bar" style="width:80%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>20.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px;" class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />14.0 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Ryzen 5
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />16 GB
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 512 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />AMD Radeon Graphics
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />1.19 kg
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+
+                                </div>
+                                <div class="config-text">
+                                    Giảm 250.000đ qua VNPAY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/3/10/638140638161724111_asus-tuf-gaming-fx517-den-dd-rtx-3050-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 4.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Asus TUF Gaming FX517ZC-HN077W i5 12450H">Asus TUF Gaming FX517ZC-HN077W i5 12450H</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    19.990.000₫
+                                    <div class="newPrice-bar" style="width:90%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>23.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:20px;" class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:115px;" class="prd-sale-config-param">
+                                    <span data-title="Màn hình">
+                                        <img src="https://s.net.vn/2ODO" />15.6 inch
+                                    </span>
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Core i5
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB(1 thanh 8GB)
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <img src="https://s.net.vn/7D1I" />SSD 512 GB
+                                    </span>
+                                    <span data-title="Đồ họa">
+                                        <img src="https://s.net.vn/bFBN" />NVIDIA GeForce RTX 3050 4GB
+                                    </span>
+                                    <span data-title="Trọng lượng">
+                                        <img src="https://s.net.vn/Pa3s" />2.0 kg
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/Vnapy-1693370130549.png" />
+
+                                </div>
+                                <div class="config-text">
+                                    Giảm 250.000đ qua VNPAY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="picture">
+            <div class="picture-frame">
+                <img src="https://images.fpt.shop/unsafe/fit-in/1200x200/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/30/638317084560547430_F-H5_1200x200.png" />
+            </div>
+        </div>
+        <section class="hot-tablet">
+            <div class="hot-tablet-frame">
+                <div class="title">
+                    <div class="title-tablet">
+                        <h2>TABLET BÁN CHẠY</h2>
+                    </div>
+                    <div style="margin-left:30px;" class="view-all-btn">
+                        <a href="#">Xem tất cả</a>
+                    </div>
+                </div>
+                <div class="prd-sale">
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/10/19/638017388619197196_ipad-pro-11-m2-2022-wifi-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="iPad Pro 11 2022 M2 WiFi 128GB">iPad Pro 11 2022 M2 WiFi 128GB</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    20.990.000₫
+                                    <div class="newPrice-bar" style="width:87%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>23.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Apple M2
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />11.0 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />128GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/22/637994560710957944_samsung-galaxy-tab-s6-lite-2022--dd-docquyen.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Samsung Galaxy Tab S6 Lite 2022">Samsung Galaxy Tab S6 Lite 2022</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    6.990.000₫
+                                    <div class="newPrice-bar" style="width:70%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>9.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />SCT310
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />10.1 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />3 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />32GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/10/6/638006461102508767_may-tinh-bang-masstel-tab-10m-4g-docquyen-100ngay.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Masstel Tab 10M 4G">Masstel Tab 10M 4G</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    2.690.000₫
+                                    <div class="newPrice-bar" style="width:80%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>3.490.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Snapdragon 215
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />10.0 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />3 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />32GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/10/6/638006465857672321_coolpad-tab-tasker-10-dd-docquyen-bh.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Coolpad Tab Tasker 10 Wifi 3GB-32GB">Coolpad Tab Tasker 10 Wifi 3GB-32GB</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    1.690.000₫
+                                    <div class="newPrice-bar" style="width:55%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>2.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px;" class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Apple M2
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />11.0 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />128GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="picture">
+            <div class="picture-frame">
+                <img src="https://images.fpt.shop/unsafe/fit-in/1200x200/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/10/4/638320409588364924_H5-1200x200.png" />
+            </div>
+        </div>
+        <section class="dienmay-giadung">
+            <div class="dienmay-giadung-frame">
+                <div style="gap:870px" class="title">
+                    <div class="dienmay-title">
+                        <h2>ĐIỆN MÁY - GIA DỤNG</h2>
+                    </div>
+                    <div class="view-all-btn">
+                        <a href="#">Xem tất cả</a>
+                    </div>
+                </div>
+                <div class="box-giadung">
+                    <div class="box-giadung-prd">
+                        <a href="#">
+                            <div style="text-align:center" class="item-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/32x32/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2023/5/29/638209730365932396_ic-star.png" />
+                            </div>
+                            <div class="giadung-text">
+                                Ưu đãi online
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-giadung-prd">
+                        <a href="#">
+                            <div style="text-align:center" class="item-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/32x32/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2023/5/29/638209713467489005_img-quat-dieu-hoa.png" />
+                            </div>
+                            <div class="giadung-text">
+                                Quạt điều hòa
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-giadung-prd">
+                        <a href="#">
+                            <div style="text-align:center" class="item-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/32x32/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2023/5/29/638209713467646952_img-noi-chien.png" />
+                            </div>
+                            <div class="giadung-text">
+                                Nồi chiên không dầu
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-giadung-prd">
+                        <a href="#">
+                            <div style="text-align:center" class="item-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/32x32/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2023/5/29/638209812502023224_img-may-hut-bui.png" />
+                            </div>
+                            <div class="giadung-text">
+                                Robot hút bụi
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-giadung-prd">
+                        <a href="#">
+                            <div style="text-align:center" class="item-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/32x32/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2023/5/29/638209812905717511_img-noi-com-dien.png" />
+                            </div>
+                            <div class="giadung-text">
+                                Nồi cơm điện
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-giadung-prd">
+                        <a href="#">
+                            <div style="text-align:center" class="item-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/32x32/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2023/5/29/638209812903746667_img-may-loc-nuoc.png" />
+                            </div>
+                            <div class="giadung-text">
+                                Máy lọc nước
+                            </div>
+                        </a>
+                    </div>
+                    <div class="box-giadung-prd">
+                        <a href="#">
+                            <div style="text-align:center" class="item-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/32x32/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2023/6/20/638228539953483507_img-tivi.png" />
+                            </div>
+                            <div class="giadung-text">
+                                Tivi
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="prd-sale">
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/10/14/638013619734584209_quat-dieu-hoa-kangaroo-kg50f64-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Quạt điều hoà Kangaroo KG50F64">Quạt điều hoà Kangaroo KG50F64</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    2.490.000₫
+                                    <div class="newPrice-bar" style="width:50%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>4.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span>
+                                        <img src="https://s.net.vn/nNzA" />Công suất 90 W
+                                    </span>
+                                    <span>
+                                        <img style="width:16px;" src="https://s.net.vn/m086" />Bình chứa 42 lít
+                                    </span>
+                                    <span>
+                                        <img src="https://s.net.vn/K6J8" />Diện tích làm mát: 20-25 m²
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/12/14/638066232584133021_robot-hut-bui-takdir-v6s-vc-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Robot hút bụi Takdir V6S VC">Robot hút bụi Takdir V6S VC</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    2.790.000₫
+                                    <div class="newPrice-bar" style="width:50%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>5.490.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span>
+                                        <img src="https://s.net.vn/nNzA" />Lực hút mạnh mẽ 3000 Pa
+                                    </span>
+                                    <span>
+                                        <img style="width:16px;" src="https://s.net.vn/m086" />Dung lượng pin 2600 mAh
+                                    </span>
+                                    <span>
+                                        <img src="https://s.net.vn/K6J8" />Vừa hút bụi, vừa lau sàn
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/8/17/638278780006680635_smart-tivi-samsung-uhd-4k-au7002-dd-logo.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Smart Tivi Samsung Crystal UHD 4K 50 inch UA50AU7002">Smart Tivi Samsung Crystal UHD 4K 50 inch UA50AU7002</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    8.690.000₫
+                                    <div class="newPrice-bar" style="width:85%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>10.490.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:30px;" class="prd-sale-config">
+                            <div style="height:80px;" class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span>
+                                        <img style="width:25px;" src="https://s.net.vn/Dpgn" />Smart TV
+                                    </span>
+                                    <span>
+                                        <img style="width:25px;" src="https://s.net.vn/trRi" />Crystal UHD, 50 inch, 4K, 60 Hz
+                                    </span>
+                                    <span>
+                                        <img src="https://s.net.vn/nNzA" />20 W
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/8/637667139425593536_noi-chien-khong-dau-hoi-nuoc-kalite-15-lit-steam-x-den-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.600.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Nồi chiên không dầu hơi nước Kalite 15 lít STEAM X">Nồi chiên không dầu hơi nước Kalite 15 lít STEAM X</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    3.890.000₫
+                                    <div class="newPrice-bar" style="width:80%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>4.690.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:30px;" class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span>
+                                        <img src="https://s.net.vn/nNzA" />Công suất 985-1635 W
+                                    </span>
+                                    <span>
+                                        <img style="height:20px; width:20px;" src="https://s.net.vn/m086" />Dung tích 15 lít
+                                    </span>
+                                    <span>
+                                        <img src="https://s.net.vn/nNzA" />Nồi chiên không dâu hơi nước
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="suggest">
+            <div class="suggest-frame">
+                <div class="title">
+                    <div class="suggest-title">
+                        <h2>GỢI Ý HÔM NAY</h2>
+                    </div>
+                </div>
+                <ul class="listfilter">
+                    <li style="border-top-left-radius:8px;border-bottom-left-radius:8px;" class="item">
+                        <a href="#">Độc quyền</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Top Tìm Kiếm</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Laptop Giảm Sốc</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Phụ Kiện Gaming</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Phụ Kiện -50%</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Thiết Bị Âm Thanh</a>
+                    </li>
+                    <li class="item">
+                        <a href="#">Phụ Kiện Du Lịch</a>
+                    </li>
+                    <li style="border-top-right-radius:8px;border-bottom-right-radius:8px;" class="item">
+                        <a href="#">Đồng Hồ Thông Minh</a>
+                    </li>
+                </ul>
+                <div class="prd-sale">
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/3/31/638158962810512367_ss-galaxy-s22-dd-icon.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 10.000.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Samsung Galaxy S22 5G 128GB">Samsung Galaxy S22 5G 128GB</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    11.990.000₫
+                                    <div class="newPrice-bar" style="width:60%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>21.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Snapdragon 8 Gen 1
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />6.1 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />128GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/6/30/638237370001190590_honor-x8-dd-docquyen.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 1.000.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Honor X8A 8GB-128GB">Honor X8A 8GB-128GB</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    3.990.000₫
+                                    <div class="newPrice-bar" style="width:87%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>4.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />MediaTek Helio G88
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />6.7 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />128GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/3/24/638152728715036708_xiaomi-13-lite-dd-docquyen-bh.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 2.700.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Xiaomi 13 Lite 8GB-128GB">Xiaomi 13 Lite 8GB-128GB</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    7.990.000₫
+                                    <div class="newPrice-bar" style="width:87%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>10.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Snapdragon 7 Gen 1
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />6.55 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />8 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />128GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd-sale-container">
+                        <div class="prd-sale-img">
+                            <a href="#">
+                                <span><img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/19/638174908829566756_samsung-galaxy-tab-a8-wifi-dd.jpg" /></span>
+                            </a>
+                            <div class="prd-sale-label">
+                                <p><span class="tragop">Trả góp 0%</span></p>
+                                <p><span class="gia-giam">Giảm 1.200.000đ</span></p>
+                            </div>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="Samsung Galaxy Tab A8 WiFi">Samsung Galaxy Tab A8 WiFi</a></h3>
+                            <div class="newOldPrice">
+                                <div class="newPrice">
+                                    4.790.000₫
+                                    <div class="newPrice-bar" style="width:87%;"></div>
+                                </div>
+                                <div class="oldPrice">
+                                    <p>5.990.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div class="prd-sale-config-frame">
+                                <div style="height:60px;" class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <img src="https://s.net.vn/bFBN" />Unisoc T618
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <img style="width:16px;" src="https://s.net.vn/2ODO" />10.5 inch
+                                    </span>
+                                    <span data-title="RAM">
+                                        <img src="https://s.net.vn/THNT" />4 GB
+                                    </span>
+                                    <span data-title="Bộ nhớ trong">
+                                        <img src="https://s.net.vn/7D1I" />64GB
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div style="font-size:12px;" class="config-text">
+                                    Giảm giá 5% tối đa 200,000đ qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="discount-online">
+            <div class="discount-online-frame">
+                <h2 class="title">ƯU ĐÃI KHI THANH TOÁN ONLINE</h2>
+                <div class="discount-slide">
+                    <div class="discount-container">
+                        <a href="#"><img src="https://images.fpt.shop/unsafe/fit-in/384x180/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/12/638301383892118053_H3.png" /></a>
+                    </div>
+                    <div class="discount-container">
+                        <a href="#"><img src="https://images.fpt.shop/unsafe/fit-in/384x180/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/7/20/637939260761612196_F_384x180-4.png" /></a>
+                    </div>
+                    <div class="discount-container">
+                        <a href="#"> <img src="https://images.fpt.shop/unsafe/fit-in/384x180/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/9/30/638317077470691572_H3.png" /></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="container-dichvu">
+            <div class="box-dichvu">
+                <div class="title-box-dichvu">
+                    <div class="title-box-dichvu-text">
+                        DỊCH VỤ TIỆN ÍCH
+                    </div>
+                    <div style="width:70px;" class="view-all-btn">
+                        <a href="...">Xem tất cả</a>
+                    </div>
+                </div>
+                <div class="box-list-dichvu">
+                    <div class="bg1">
+                        <a href="" class="box-list-dichvu">
+                            <div class="item-ing">
+                                <img src="https://fptshop.com.vn/Content/v5d/images/ic-water.png">
+                            </div>
+                            <div class="wrap-title">
+                                <div class="item-text">Thanh toán tiền nước</div>
+                                <p>Thanh toán nhanh chóng, tiện lợi</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="bg2">
+                        <a href="   " class="box-list-dichvu">
+                            <div class="item-ing">
+                                <img src="https://fptshop.com.vn/Content/v5d/images/service-item2.png">
+                            </div>
+                            <div class="wrap-title">
+                                <div class="item-text">Thanh toán tiền điện </div>
+                                <p>Thanh toán nhanh chóng, tiện lợi</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="bg3">
+                        <a href="" class="box-list-dichvu">
+                            <div class="item-ing">
+                                <img src="https://fptshop.com.vn/Content/v5d/images/service-item3.png">
+                            </div>
+                            <div class="wrap-title">
+                                <div class="item-text">Thẻ cào điện thoại</div>
+                                <p>Giảm 2% cho mệnh giá từ 100.000đ</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="bg4">
+                        <a href="" class="box-list-dichvu">
+                            <div class="item-ing">
+                                <img src="https://fptshop.com.vn/Content/v5d/images/ic-credit-card.png">
+                            </div>
+                            <div class="wrap-title">
+                                <div class="item-text">Thẻ game</div>
+                                <p>Giảm 2% cho mệnh giá từ 100.000đ</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-phukien">
+            <div class="box-phukien">
+                <div class="title-box-phukien">
+                    PHỤ KIỆN HOT
+                </div>
+                <div class="list-phukien">
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="https://s.net.vn/Q5zB" />
+                                <p>Phụ kiện nổi bật</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="https://s.net.vn/XnF5" />
+                                <p>Bao da ốp lưng</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/SacDuPhong.jpg" />
+                                <p>Sạc dự phòng</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/TheNho.jpg" />
+                                <p>Thẻ nhớ</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/PhuKienApple.jpg" />
+                                <p>Phụ kiện apple</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/MiengDanManHinh.jpg" />
+                                <p>Miếng dán màn hình</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/TaiNghe.jpg" />
+                                <p>Tai nghe </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/MucIn.jpg" />
+                                <p>Mực in</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/Loa.jpg" />
+                                <p>Loa</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/USB.jpg" />
+                                <p>USB-Ổ cứng</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/SacCap.jpg" />
+                                <p>Sạc cáp</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/Chuot.jpg" />
+                                <p>Chuột</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/BanPhim.jpg" />
+                                <p>Bàn phím</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/BaLo.jpg" />
+                                <p>Balo - Túi xách</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/TVBox.jpg" />
+                                <p>TV BOX</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list-icon-phukien">
+                        <a class="icon1-phukien" href="#">
+                            <div class="pd1-img-p">
+                                <img src="../../Content/IMG/PhuKienKhac.jpg" />
+                                <p>Phụ kiện khác</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="fs-bxh">
+            <div class="box-fs-bxh">
+                <div class="box-fs-bxh-sdb">
+                    <img src="https://images.fpt.shop/unsafe/fit-in/394x115/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/6/4/637584199039669299_icon-desktop-1.png">
+                </div>
+                <div class="box-fs-bxh-sdb">
+                    <img src="https://images.fpt.shop/unsafe/fit-in/394x115/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/6/4/637584199040294624_icon-desktop.png">
+                </div>
+                <div class="box-fs-bxh-sdb">
+                    <img src="https://images.fpt.shop/unsafe/fit-in/394x115/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/2/24/638128430158696737_img-1.png">
+                </div>
+            </div>
+        </section>
+    </article>
+</body>
+</html>
+

@@ -1,0 +1,62 @@
+﻿@using DO_AN_FPT_SHOP.Models
+@model Voucher 
+@{
+    ViewBag.Title = "ChinhSuaVoucher";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chỉnh sửa voucher</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<style>
+    h2 {
+        width: 400px;
+        border-bottom: 4px solid lightgray;
+    }
+
+    input {
+        margin-top: 5px;
+        border-radius: 8px;
+        height: 35px;
+    }
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+</style>
+<body>
+    <h1 id="admin-title">ADMIN</h1>
+    <h2>CHỈNH SỬA VOUCHER</h2>
+
+    <form action="~/Admins/ChinhSuaVoucher" method="post">
+        <div class="form-horizontal">
+            <div class="form-group" style="width:1200px;margin:0px auto; margin-top:20px">
+                <div class="control-label col-md-2">
+                    VOUCHER
+                </div>
+                <div style="display:flex;flex-direction:column" class="col-md-10">
+                    <input value="@Model.VoucherID" type="number" name="VoucherID" readonly style="background-color:lightgray" />
+                    Mô tả:
+                    <input required maxlength="50" value="@Model.Description" name="Description" type="text" />
+                    Mức giảm
+                    <input required maxlength="50" value="@Model.Discount" name="Discount" type="number" />
+                </div>
+                <div class="col-sm-offset-2 col-sm-10" style="margin-top:10px">
+                    <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                    @Html.ActionLink("Danh sách", "DanhSachVoucher", null, new { @class = "btn btn-info" })
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</body>
+</html>
+

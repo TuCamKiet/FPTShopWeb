@@ -1,0 +1,71 @@
+﻿@using DO_AN_FPT_SHOP.Models
+@using System.Linq
+@model List<DO_AN_FPT_SHOP.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    h2 {
+        width: 350px;
+        margin-left: 39%;
+        color: #3350b4;
+        border-bottom: 5px solid lightgray;
+    }
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+</style>
+<H1 id="admin-title">ADMIN</H1>
+<h2>QUẢN LÝ KHÁCH HÀNG</h2>
+<table class="table">
+    <tr>
+        <th>
+            TÊN NGƯỜI DÙNG
+        </th>
+        <th>
+            MẬT KHẨU
+        </th>
+        <th>
+            TÊN KHÁCH HÀNG
+        </th>
+        <th>
+            SĐT
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var cus in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(cusItem => cus.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(cusItem => cus.User.PassWord)
+            </td>
+            <td>
+                @Html.DisplayFor(cusItem => cus.CusName)
+            </td>
+            <td>
+                @Html.DisplayFor(cusItem => cus.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Lịch sử mua hàng", "DanhSachDonHang", new { phone = cus.Phone }, new { @class = "btn btn-sm btn-dark" })
+                @if (cus.LoginStatus == true)
+                {
+                    @Html.ActionLink("Mở tài khoản", "UnblockCustomer", new { username = cus.UserName }, new { @class = "btn btn-sm btn-dark" });
+                }
+                else
+                {
+                    @Html.ActionLink("Khóa tài khoản", "BlockCustomer", new { username = cus.UserName }, new { @class = "btn btn-sm btn-dark" })
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+
+

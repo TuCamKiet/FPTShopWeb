@@ -1,0 +1,329 @@
+﻿@using System.Linq
+@using DO_AN_FPT_SHOP.Models
+@model List<DO_AN_FPT_SHOP.Models.OrderDetail>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <title> Giỏ hàng </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="~/Content/CartStyle2.css" rel="stylesheet" />
+</head>
+
+    <div class="cart-body">
+        <div class="cart-top">
+            <div class="cart-top-frame">
+                <div class="cart-top-content">
+                    <div class="top-content-first">
+                        <a href="@Url.Action("Category", "Categories")">
+                        <span> Tiếp tục mua hàng </span>
+                        </a>
+                        <a href="@Url.Action("LichSuMuaHang", "OrderList")">
+                        <span> Lịch sử mua hàng</span>
+                        </a>
+                        </div>
+
+                        <div class="top-content-second">
+                        <p>Sản phẩm đã được thêm vào giỏ hàng
+                        <a href="@Url.Action("HuyDonHang", "OrderList", new { OrderID = Model[0].OrderID })">
+                        <img src="https://static.vecteezy.com/system/resources/previews/007/820/712/non_2x/recycle-icon-garbage-icon-logo-design-template-free-vector.jpg" />
+                        </a>
+                        </p>
+                        </div>
+
+
+                        <div class="top-content-box-prod">
+                        <div class="container-info">
+
+                            <form id="myform" action="/OrderList/HasOrdered" method="post">
+
+                                <div style="overflow:scroll; height:300px;width:750px">
+                                    @{ DO_AN_FPT_SHOP.Models.DBFPTSHOPEntities db = new DO_AN_FPT_SHOP.Models.DBFPTSHOPEntities(); }
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <input hidden type="number" readonly name="OrderID" value="@Model[0].OrderID" />
+
+                                        //ProDeId vốn là ProID, Nếu bảng ProDetail không có thì vẫn sẽ hiện tên sản phẩm vì
+                                        //GetDetails lấy tham số duyệt trên bảng Product
+                                        var detail = DO_AN_FPT_SHOP.Controllers.ProductsController.GetDetails(item.ProDeID);
+
+                                        <input hidden name="OrderDetailID" value="@item.OrderDetailID" type="number" readonly />
+                                        <input hidden name="ProDeID" value="@item.ProDeID" type="number" readonly />
+
+                                        <div class="box-prod">
+                                            <div class="box-prod-img">
+                                                <div class="box-prod-img-frame">
+                                                    <img id="anh" src="@detail.ProImgList[0]" />
+                                                </div>
+                                            </div>
+                                            <div class="box-prod-info">
+                                                <div class="name-prod">
+                                                    <h2>@detail.Product.ProName</h2>
+                                                    <a href="@Url.Action("Huy", new { orDeID = item.OrderDetailID })">
+                                                        <img src="https://static.vecteezy.com/system/resources/previews/007/820/712/non_2x/recycle-icon-garbage-icon-logo-design-template-free-vector.jpg" />
+                                                    </a>
+                                                </div>
+                                                <div class="box-prod-option">
+                                                    <div class="color-and-quantity">
+                                                        <div class="color">
+                                                            <p>Màu sắc</p>
+                                                            <select id="list-color">
+                                                                @foreach (var color in detail.ProDetail.ColorProDes)
+                                                                {
+                                                                    <option id="option-color" value="@color.ColorID">@color.Color.ColorName</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                        <div class="quantity">
+                                                            <p>Số lượng</p>
+                                                            <input id="@item.OrderDetailID" name="Quantity" type="number" max="@item.ProDetail.Product.RemainQuantity" value="@item.Quantity" min="1" />
+                                                        </div>
+                                                    </div>
+                                                    <div id="newPrice-oldPrice" style="display:flex; flex-direction:column; justify-content:flex-start;width:150px">
+                                                        @{var newPrice = "np" + item.OrderDetailID;}
+                                                        <input style="border:none;color:darkred; font-size:20px" type="number" id="@newPrice" name="Price" readonly value="@item.Price" />
+                                                        @*<p style="display:flex;width:fit-content;margin:0" id="newPrice"></p>
+                                @{var oldPrice = "op" + item.OrderDetailID;}
+                                <input type="number" id="@oldPrice" readonly value="@item.Price" />
+                                <p style="display:flex;width:fit-content;margin:0" id="oldPrice"><p>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+
+
+
+                                <div style="margin-top:10px;">
+                                    Khuyến mãi thanh toán
+                                </div>
+                                <div class="voucher-box" style="display:flex; flex-direction:column; justify-content:center; padding-left:10px; overflow:scroll">
+                                    @foreach (var voucher in db.Vouchers)
+                                    {
+                                        var voucherID = "v" + voucher.VoucherID;
+                                        <input class="@voucherID" value="@voucher.VoucherID" type="number" hidden/>
+                                        <div class="voucher-product-2">
+                                            <input id="@voucherID" name="Discount" type="checkbox" value="@voucher.Discount" class="voucher1" />
+                                            <label for="@voucherID">@voucher.Description Giảm @voucher.Discount</label>
+                                        </div>
+                                        <script>
+                                            document.getElementById("@voucherID").onclick = function () {
+                                                if (this.checked) {
+                                                    document.getElementsByClassName("@voucherID")[0].setAttribute("name", "VoucherID");
+
+                                                    document.getElementById("discount").value = parseFloat(document.getElementById("discount").value) + parseFloat(this.value);
+
+                                                    document.getElementsByName("TotalPrice")[0].value = parseFloat(document.getElementsByName("TotalPrice")[0].value) - parseFloat(this.value);
+                                                }
+                                                else {
+                                                    document.getElementsByClassName("@voucherID")[0].removeAttribute("name");
+
+                                                    document.getElementById("discount").value = parseFloat(document.getElementById("discount").value) - parseFloat(this.value);
+
+                                                    document.getElementsByName("TotalPrice")[0].value = parseFloat(document.getElementsByName("TotalPrice")[0].value) + parseFloat(this.value);
+                                                }
+                                                //tắt mở tên (name) của input để nó truyền hoặc không truyền dữ liệu đi vào post
+                                            }
+                                        </script>
+                                    }
+
+                                </div>
+                            </form>
+                        <div style="margin-top:10px;">
+                        Khuyến mãi từ nhà cung cấp
+                        </div>
+                        <div class="voucher-pay" style="height:fit-content;display:flex; flex-direction:column; justify-content:center; padding:10px;">
+                        <div class="discount-pay"><input type="radio" id="voucher-pay-1" name="name" value="" />Nhập mã FPTSHOP200 giảm 1% tối đa 200.000 đồng khi thanh toán 100% qua ZaloPay <br /> <a href="#">Xem chi tiết</a></div>
+                        <div class="discount-pay"><input type="radio" id="voucher-pay-2" name="name" value="" />Giảm 1.000.000đ cho 1 số sản phẩm Apple và Samsung khi thanh toán online 100% qua thẻ tín dụng VIB  <br /> <a href="#">Xem chi tiết</a></div>
+                        <div class="discount-pay"><input type="radio" id="voucher-pay-3" name="name" value="" />Giảm ngay 5% tối đa 200.000 đồng khi thanh toán trả góp 6/12 tháng qua Kredivo <a style=" margin-left: 0px;" href="#">Xem chi tiết</a></div>
+                        </div>
+                        </div>
+
+
+
+                        </div>
+
+
+                        <div class="top-content-box-discount">
+                        <form>
+                        <div class="discount-banner">
+                        <p id="discount-text">Khuyến mãi theo đơn hàng</p>
+                        </div>
+                        <div class="discount-content">
+                        <p>Khuyến mãi tặng kèm</p>
+                        <div class="box-discount-content">
+                        <div class="box-discount-content-1">
+                        <span class="discount-content-img">
+                        <img src="https://fptshop.com.vn/estore-images/promo_ticket.svg" />
+                        </span>
+                        <div class="discount-content-text">
+                        Thu cũ đổi mới trợ giá ngay đến 2 triệu (SmartExchange)
+                        </div>
+                        </div>
+                        <div class="box-discount-content-2">
+                        <span class="discount-content-img">
+                        <img src="https://fptshop.com.vn/estore-images/promo_ticket.svg" />
+                        </span>
+                        <div class="discount-content-text">
+                        Điện Thoại - Mobifone - Mã giảm giá 170,000đ mua MobiFone 0Đ
+                        <p>x1</p>
+                        </div>
+                        </div>
+
+                        </div>
+                        </div>
+                        </form>
+                        </div>
+
+                        <div class="delivery">
+                        <div class="delivery-content">
+
+                        <div class="delivery-option">
+                        <div class="choose-form">
+                        <span><img src="https://bom.so/ylEdkD" /></span>
+                        <p>Chọn hình thức thanh toán</p>
+                        </div>
+                        <div class="chon-hinhthuc">
+                        <input type="radio" id="GHTN" name="name" checked />Giao hàng tận nơi
+                        <input type="radio" id="NTCH" name="name" />Nhận tại cửa hàng
+                        </div>
+                        </div>
+
+                        <div class="customer-info">
+                        <div class="customer-info-container">
+                        <form id="form-customer">
+                        <div class="customer-info-hd">
+                        <p id="thong-tin-nhan-hang">Thông tin khách hàng</p>
+                        <span><a href="#">Thay đổi</a></span>
+                        </div>
+
+                        <div class="customer-info-body">
+                        <div id="nguoi-dat-hang">
+                        <div>Người đặt hàng</div>
+                        <div class="name-phoneNumber">
+                        <p style="margin-bottom:5px;">
+                        @{
+                            var user = (Session["Account"] as DO_AN_FPT_SHOP.Models.User);
+                            var cusname = user.Customers.FirstOrDefault().CusName;
+                            var phone = user.Customers.FirstOrDefault().Phone;
+                            var address = user.Customers.FirstOrDefault().Address;
+                            @Html.Raw(cusname)
+                        }
+                        </p>@phone
+                        </div>
+                        </div>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+
+                        <div class="address-info">
+                        <form id="form">
+                        <p id="form-title">Địa chỉ nhận hàng</p>
+                        <div class="row"><input type="text" style="width: 240px; height: 56px;" value="@address" /></div>
+                        @*<div class="row">
+                                <div class="col-sm-4"><input type="text" style="width: 240px; height: 56px;" placeholder="Nhập Tỉnh/Thành Phố" /></div>
+                                <div class="col-sm-4"><input type="text" style="width:240px;height:56px;" placeholder="Nhập Quận/Huyện" /></div>
+                                <div class="col-sm-4"><input type="text" style="width:240px;height:56px;" placeholder="Nhập Phường/Xã" /></div>
+                            </div>
+                            <div style="margin-top:15px;" class="row">
+                                <div class="col-sm-12"><input type="text" style="width:740px;height:56px;" placeholder="Nhập địa chỉ, tên đường" /></div>
+                            </div>*@
+                        <div class="time">
+                        <div class="row">
+                        <div class="col-sm-4"><p id="time-text">Thời gian giao hàng</p></div>
+                        <div class="col-sm-8">
+                        <select>
+                        <option value="value">Chỉ giao hàng giờ hành chính</option>
+                        <option value="value">Tất cả ngày trong tuần</option>
+                        </select>
+                        </div>
+                        </div>
+                        </div>
+
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="cart-bottom">
+                        <div class="cart-bottom-first">
+                        <div class="cart-bottom-first-frame">
+                        <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeIh00ciBiW97AWwWKzqcHZ5cBwxqh01ffXQ&usqp=CAU" /></span>
+                        <a href="#">Sử dụng voucher hoặc đổi FGold</a>
+                        </div>
+                        </div>
+                        <div class="cart-bottom-second">
+                        <div class="cart-bottom-second-frame">
+                        <input type="checkbox" name="name" />
+                        <label>Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a>, <a href="#"> Chính sách thu thập và xử lý dữ liệu cá nhân </a> của FPT Shop </label>
+                        </div>
+                        </div>
+                        <div class="cart-bottom-last">
+                        <div class="cart-bottom-last-frame">
+                        <div class="cart-bottom-last-left">
+                        <div class="cart-bottom-total">
+                        <p>Tổng tiền:</p>
+                        @*@{ var totalPrice = ViewModelProduct.GetPrice((double?)Model[0].Order.TotalPrice);}
+                            <p id="oldPrice">@totalPrice</p>*@
+                        <input name="TotalPrice" value="@Model.Sum(r => r.Price)" type="number" readonly/>
+                        </div>
+                        <div class="cart-bottom-discount-voucher">
+                        <p>Giảm giá voucher</p>
+                        <input  id="discount" type="number" value="0" readonly/>
+                        </div>
+                        </div>
+
+                        <div class="cart-bottom-last-right">
+                        <div class="pay-product">
+                        <p style="width:235px;font-size:18px;">Cần thanh toán <input name="TotalQuantity" value="@Model.Sum(r => r.Quantity)" readonly type="number"> sản phẩm</p>
+                        @*<p>@totalPrice</p>*@
+                        </div>
+                        <button class="btn-order" type="submit" form="myform"><span>Hoàn tất đặt hàng</span></button>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        @*<script src="~/Content/CartJS1.js">
+                            </script>*@
+
+
+                        @foreach (var item in Model)
+                        {
+                            var newPrice = "np" + item.OrderDetailID;
+                            //var oldPrice = "op" + item.OrderDetailID;
+
+                            <script>
+
+
+                                document.getElementById("@item.OrderDetailID").onchange = function () {
+                                    document.getElementById("@newPrice").value = parseFloat(@Html.Raw(item.Price / item.Quantity)) * this.value;
+                        @*document.getElementsByName("@oldPrice").value = parseFloat(@Html.Raw(item.Price/item.Quantity)) * this.value;*@
+                                    var arr = document.getElementsByName('Price');
+                                    var tot = 0;
+                                    for (var i = 0; i < arr.length; i++) {
+                                            tot += parseFloat(arr[i].value);
+                                    }
+                                    document.getElementsByName('TotalPrice')[0].value = tot - parseFloat(document.getElementById("discount").value);
+
+                                    var arr1 = document.getElementsByName('Quantity');
+                                    var tot1 = 0;
+                                    for (var i = 0; i < arr1.length; i++) {
+                                            tot1 += parseFloat(arr1[i].value);
+                                    }
+                                    document.getElementsByName('TotalQuantity')[0].value = tot1;
+                                }
+
+                            </script>
+                        }
+

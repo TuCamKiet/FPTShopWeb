@@ -1,0 +1,84 @@
+﻿@model DO_AN_FPT_SHOP.Models.Product
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<style>
+    h2 {
+        margin-left: 35%;
+        color: #3350b4;
+    }
+
+    #title-details {
+        color: #3350b4;
+        margin-left: 35%;
+    }
+
+    #detail-product-img {
+        margin-left: 120px;
+    }
+
+    #detail-product-color {
+        margin-left: 130px;
+    }
+
+    h2 {
+        margin-left: 35%;
+        color: #3350b4;
+    }
+
+
+    #admin-title {
+        margin-left: 45%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #3350b4;
+    }
+</style>
+<body>
+    <h1 id="admin-title">ADMIN</h1>
+    <h2>CHI TIẾT SẢN PHẨM</h2>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4" style="border:1px solid grey;border-radius:10px;background:white;">
+                    @{ var color = Model.ProDetails.FirstOrDefault().ColorProDes;}
+                    @foreach (var item in color)
+                    {
+                        <img id="detail-product-img" style="width:200px;height:200px;" src="@Html.DisplayFor(modelItem=>item.ProImg)" />
+                        <h4 id="detail-product-color">Màu sắc :  @Html.DisplayFor(model => item.Color.ColorName)</h4>
+                    }
+                </div>
+                <div class="col-md-8" style="padding:10px 30px;">
+                    <h3>@Html.DisplayFor(model => model.ProName)</h3>
+                    <h4>Chức năng</h4>
+                    <p>@Html.DisplayFor(model => model.ProDetails.FirstOrDefault().Function)</p>
+                    <h4>Pin : @Html.DisplayFor(model => model.ProDetails.FirstOrDefault().Pin)</h4>
+                    <h4>Màn hình :  @Html.DisplayFor(model => model.ProDetails.FirstOrDefault().Monitor)</h4>
+                    <h4>Camera :  @Html.DisplayFor(model => model.ProDetails.FirstOrDefault().Camera)</h4>
+                    <h4>Chip :  @Html.DisplayFor(model => model.ProDetails.FirstOrDefault().Chip)</h4>
+                    <h4>Ram :  @Html.DisplayFor(model => model.ProDetails.FirstOrDefault().Ram)</h4>
+                    <h4>Hãng :  @Html.DisplayFor(model => model.ProDetails.FirstOrDefault().Supplier.SupName)</h4>
+                    <h4>Màu sắc :  @Html.DisplayFor(model => model.ProDetails.FirstOrDefault().ColorProDes.FirstOrDefault().Color.ColorName)</h4>
+                    @{ var sto = Model.ProDetails.FirstOrDefault().StoProDes;}
+                    @foreach (var item in sto)
+                    {
+                        <h4> Storage :  @Html.DisplayFor(model => item.Storage.StoValue)</h4>
+                        <h4>Giá :  @Html.DisplayFor(model => item.Price)</h4>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,63 @@
+﻿
+@model List<DO_AN_FPT_SHOP.Models.ViewModelProduct>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<head>
+    <link href="~/Content/CategoryPhone7.css"  rel="stylesheet" />
+</head>
+<div style="margin:0px auto" class="list-box-product">
+    <div class="list-box-product" >
+        <div style=" background: white; border-radius:8px; display:flex;height:fit-content;" class="prd-sale">
+
+            <!----------------------------------------------------->
+            @foreach (var item in Model)
+            {
+                <div class="prd-sale-container">
+                    <a href="@Url.Action("ProductDetail", "Products", new { id=item.Product.ProID })">
+                        <div class="prd-sale-img">
+                            <span>
+                                <img style="width:170px; height:170px" src="@item.ProImgList[0]" />
+                            </span>
+                        </div>
+                        <div class="prd-sale-info">
+                            <h3 id="name-product"><a href="#" title="@item.Product.ProName">@item.Product.ProName</a></h3>
+                            <div class="price-product-spm1">
+                                @{ var price = DO_AN_FPT_SHOP.Models.ViewModelProduct.GetPrice(item.PriceList[0]);}
+                                <h3>@price</h3>
+                            </div>
+                        </div>
+                        <div class="prd-sale-config">
+                            <div style="margin-top:20px;" class="prd-sale-config-frame">
+                                <div class="prd-sale-config-param">
+                                    <span data-title="CPU">
+                                        <i class="fa-solid fa-microchip"></i>&nbsp;@item.ProDetail.Chip
+                                    </span>
+                                    <span data-title="Màn hình">
+                                        <i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;@item.ProDetail.Monitor inches
+                                    </span>
+                                    <span data-title="RAM">
+                                        <i class="fa-solid fa-memory fa-rotate-90"></i>&nbsp;@item.ProDetail.Ram GB
+                                    </span>
+                                    <span data-title="Ổ cứng">
+                                        <i class="fa-solid fa-hard-drive"></i>&nbsp; @DO_AN_FPT_SHOP.Models.ViewModelProduct.GetStoValue(item.StoValueList[0])
+                                    </span>
+                                </div>
+                                <div class="config-img">
+                                    <img src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/https://s3-sgn09.fptcloud.com/ict-k8s-promotion-prod/images-promotion/t%E1%BA%A3i%20xu%E1%BB%91ng-1695965883711.png" />
+                                </div>
+                                <div class="config-text">
+                                    Giảm giá 5% tối đa 200,000 qua ví Kredivo
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
