@@ -27,7 +27,7 @@ namespace DO_AN_FPT_SHOP.Controllers
             var cus = db.Customers.Where(r => r.UserName == user.UserName).FirstOrDefault();
             if (cus == null) { return RedirectToAction("Category", "Categories"); }
             var order = cus.Orders.Where(r => r.OrderStatus == 0).FirstOrDefault();
-            if (order == null) { return RedirectToAction("Category", "Categories"); }
+            if (order == null) { return RedirectToAction("Category", "Categories"); } 
             var orderDetails = order.OrderDetails.ToList();
             return View(orderDetails);
         }
@@ -218,61 +218,6 @@ namespace DO_AN_FPT_SHOP.Controllers
             return RedirectToAction("Category", "Categories");
         }
         
-        //// Tìm đơn hàng đang mua
-        //var ordering = db.Orders.Where(r => r.OrderStatus == 0).FirstOrDefault();
-
-        //if (ordering == null) //Không có đơn đang mua || rỗng
-        //{
-        //    Order order = new Order();
-
-        //    OrderDetail item = new OrderDetail();
-        //    item.OrderID = order.OrderID;
-        //    item.ProDeID = product.ProDeID;
-        //    item.Quantity = 1;
-        //    item.Price = (decimal)product.Price;
-        //    item.OrderDetailStatus = false; //chua thanh toan
-
-        //    order.OrderDate = DateTime.Now;
-        //    order.TotalPrice = item.Price;
-        //    order.TotalQuantity = item.Quantity;
-        //    order.OrderStatus = 0; //dang dat hang
-
-        //    db.Orders.Add(order);
-        //    db.OrderDetails.Add(item);
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("ProductDetail", "Products", new { id = product.ProID });
-        //}
-        //else
-        //{
-        //    //DA CO TRONG ORDER VÀ CHƯA THANH TOÁN
-        //    var unpaidItems = db.OrderDetails.Where(r => r.OrderID == ordering.OrderID && r.OrderDetailStatus == false).ToList();
-        //    foreach (var item in unpaidItems)
-        //    {
-        //        if (item.ProDeID == product.ProDeID)
-        //        {
-        //            item.Quantity += 1;
-        //            item.Price = (decimal)(product.Price * (double)item.Quantity);
-        //            var orderDe = db.OrderDetails.Where(r => r.OrderDetailID == item.OrderDetailID).FirstOrDefault();
-        //            orderDe.Quantity = item.Quantity;
-        //            orderDe.Price = item.Price;
-        //            var order = db.Orders.Where(r => r.OrderID == ordering.OrderID && r.OrderStatus == 0);
-        //            db.SaveChanges();
-        //            return RedirectToAction("ProductDetail", "Products", new { id = product.ProID });
-        //        }
-        //    }
-
-        //    //KO CO TRONG ORDER
-        //    OrderDetail newitem = new OrderDetail();
-        //    newitem.OrderID = ordering.OrderID;
-        //    newitem.ProDeID = product.ProDeID;
-        //    newitem.Quantity = 1;
-        //    newitem.Price = (decimal)product.Price;
-        //    newitem.OrderDetailStatus = false; //chua thanh toan
-        //    db.OrderDetails.Add(newitem);
-        //    db.SaveChanges();
-        //    return RedirectToAction("ProductDetail", "Products", new { id = product.ProID });
-        //}
     }
 
 

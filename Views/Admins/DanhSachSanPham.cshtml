@@ -2,6 +2,13 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (TempData["AlertMessage"] != null)
+    {
+        string alertMessage = TempData["AlertMessage"].ToString();
+        <script type="text/javascript">
+        alert('@alertMessage');
+        </script>
+    }
 }
 <style>
     h2 {

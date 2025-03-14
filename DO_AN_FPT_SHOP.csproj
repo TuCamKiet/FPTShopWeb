@@ -136,6 +136,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderListController.cs" />
@@ -143,10 +144,21 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DesignPattern\DBContextSingleton.cs" />
     <Compile Include="DesignPattern\EntityFactory.cs" />
+    <Compile Include="DesignPattern\Observers\IObserver.cs" />
+    <Compile Include="DesignPattern\Observers\ISubject.cs" />
+    <Compile Include="DesignPattern\Observers\ProductoObserver.cs" />
     <Compile Include="DesignPattern\RepositoryPattern\CategoryRepository.cs" />
     <Compile Include="DesignPattern\RepositoryPattern\ICategoryRepository.cs" />
     <Compile Include="DesignPattern\Services\CategoryService.cs" />
     <Compile Include="DesignPattern\Services\ICategoryService.cs" />
+    <Compile Include="DesignPattern\Strategy\AdminLoginStrategy.cs" />
+    <Compile Include="DesignPattern\Strategy\CategorySearchStrategy.cs" />
+    <Compile Include="DesignPattern\Strategy\CustomerLoginStrategy.cs" />
+    <Compile Include="DesignPattern\Strategy\ILoginStrategy.cs" />
+    <Compile Include="DesignPattern\Strategy\ISearchStrategy.cs" />
+    <Compile Include="DesignPattern\Strategy\NameSearchStrategy.cs" />
+    <Compile Include="DesignPattern\UnitOfWorkPattern\IUnitOfWork.cs" />
+    <Compile Include="DesignPattern\UnitOfWorkPattern\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -378,6 +390,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Carts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

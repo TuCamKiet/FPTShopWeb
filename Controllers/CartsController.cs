@@ -1,4 +1,5 @@
-﻿using DO_AN_FPT_SHOP.Models;
+﻿using DO_AN_FPT_SHOP.DesignPattern;
+using DO_AN_FPT_SHOP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace DO_AN_FPT_SHOP.Controllers
 {
     public class CartsController : Controller
     {
-        DBFPTSHOPEntities db = new DBFPTSHOPEntities();
+        private static readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
         // GET: Carts
         public ActionResult Cart(int? id)
         {
-            var product=db.Products.Where(r=>r.ProID==id).FirstOrDefault();
+            var product = db.Products.Where(r => r.ProID == id).FirstOrDefault();
             return View(product);
         }
     }

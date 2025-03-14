@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using DO_AN_FPT_SHOP.DesignPattern;
+using DO_AN_FPT_SHOP.DesignPattern.Strategy;
 using DO_AN_FPT_SHOP.Models;
 using Microsoft.Ajax.Utilities;
 
@@ -13,6 +14,8 @@ namespace DO_AN_FPT_SHOP.Controllers
     public class UsersController : Controller
     {
         private readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
+        private ILoginStrategy _loginStrategy;
+
         // GET: Users
         public ActionResult Login()
         {
@@ -23,9 +26,16 @@ namespace DO_AN_FPT_SHOP.Controllers
         public ActionResult Login(string username, string password)
         {
             if (username == null || password == null) { return View(); }
-
-            var user = db.Users.Where(r => r.UserName == username && r.PassWord == password).FirstOrDefault();
-
+            if (IsAdmin(username))
+            {
+                _loginStrategy = new AdminLoginStrategy();
+            }
+            else
+            {
+                _loginStrategy = new CustomerLoginStrategy();
+            }
+            //var user = db.Users.Where(r => r.UserName == username && r.PassWord == password).FirstOrDefault();
+            var user = _loginStrategy.Login(username, password, db);
             if (user != null)
             {
                 Session["Account"]=user;
@@ -46,6 +56,13 @@ namespace DO_AN_FPT_SHOP.Controllers
             ViewBag.Message = "*Tài khoản không tồn tại";
 
             return View();
+        }
+
+        private bool IsAdmin(string username)
+        {
+            // Kiểm tra xem người dùng có phải là admin hay không
+            var user = db.Users.FirstOrDefault(r => r.UserName == username);
+            return user != null && user.Role == true;
         }
 
         public ActionResult Register()
