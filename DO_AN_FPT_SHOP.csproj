@@ -145,6 +145,11 @@
     <Compile Include="DesignPattern\Builders\IProductBuilder.cs" />
     <Compile Include="DesignPattern\Builders\ProductBuilder.cs" />
     <Compile Include="DesignPattern\Builders\ProductDirector.cs" />
+    <Compile Include="DesignPattern\Commands\ProductManager.cs" />
+    <Compile Include="DesignPattern\Commands\AddProductCommand.cs" />
+    <Compile Include="DesignPattern\Commands\DeleteProductCommand.cs" />
+    <Compile Include="DesignPattern\Commands\ICommand.cs" />
+    <Compile Include="DesignPattern\Commands\UpdateProductCommand.cs" />
     <Compile Include="DesignPattern\DBContextSingleton.cs" />
     <Compile Include="DesignPattern\EntityFactory.cs" />
     <Compile Include="DesignPattern\Observers\IObserver.cs" />

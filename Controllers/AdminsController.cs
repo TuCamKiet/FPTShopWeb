@@ -7,6 +7,7 @@ using DO_AN_FPT_SHOP.Factories;
 using DO_AN_FPT_SHOP.DesignPattern;
 using DO_AN_FPT_SHOP.Observers;
 using DO_AN_FPT_SHOP.Builders;
+using DO_AN_FPT_SHOP.Commands;
 
 namespace DO_AN_FPT_SHOP.Controllers
 {
@@ -14,6 +15,7 @@ namespace DO_AN_FPT_SHOP.Controllers
     {
         private readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
         private readonly ProductObserver productObserver;
+        private readonly ProductManager _productManager = new ProductManager();
 
         public AdminsController()
         {
@@ -117,8 +119,8 @@ namespace DO_AN_FPT_SHOP.Controllers
 
             var product = director.BuildProduct((int)catID, ProName, RemainQuantity, (int)supID, Function, (int)Pin, (int)Monitor, Camera, Chip, (int)Ram, colorID, ProImage, stoID, (double)Price);
 
-            db.Products.Add(product);
-            db.SaveChanges();
+            _productManager.AddCommand(new AddProductCommand(product, db));
+            _productManager.ExecuteCommands();
 
             productObserver.Notify("Product added: " + ProName);
             return RedirectToAction("DanhSachSanPham");
@@ -160,7 +162,10 @@ namespace DO_AN_FPT_SHOP.Controllers
             proDe.SupID = supID;
             proDe.ColorProDes.FirstOrDefault().ProImg = ProImage;
             proDe.StoProDes.FirstOrDefault().Price = (decimal?)Price;
-            db.SaveChanges();
+
+            _productManager.AddCommand(new UpdateProductCommand(pro, db));
+            _productManager.ExecuteCommands();
+
             productObserver.Notify("Product updated: " + ProName);
             return RedirectToAction("DanhSachSanPham");
         }
@@ -178,43 +183,13 @@ namespace DO_AN_FPT_SHOP.Controllers
         public ActionResult XoaSanPham(int? id)
         {
             if (id == null) return RedirectToAction("DanhSachSanPham");
-            var product = db.Products.Where(r => r.ProID == id).FirstOrDefault();
-            if (product != null)
-            {
-                var proDe = product.ProDetails.FirstOrDefault(); //dù là list nhưng sẽ chỉ có 1 thằng
-                db.ColorProDes.RemoveRange(proDe.ColorProDes);
-                db.StoProDes.RemoveRange(proDe.StoProDes);
 
-                //Xóa orderDe(quan hệ giữa 2 bảng Order và ProDe)
-                db.OrderDetails.RemoveRange(proDe.OrderDetails);
-                db.SaveChanges();
 
-                //Xóa đi order nếu orDe vừa xóa là cái duy nhất trong order ấy
-                var emptyOrders = db.Orders.Where(r => r.OrderDetails.Count == 0);
+            _productManager.AddCommand(new DeleteProductCommand((int)id, db));
+            _productManager.ExecuteCommands();
 
-                foreach (var emptyOr in emptyOrders)
-                {
-                    if (emptyOr.OrderStatus == 2) //Nếu là đơn đã thanh toán thì phải kiểm tra xem có gắn voucher hay ko
-                    {
-                        db.OrderVouchers.RemoveRange(emptyOr.OrderVouchers);
-                    }
-                }
-                db.SaveChanges();
+            productObserver.Notify("Product deleted: " + id);
 
-                if (emptyOrders.Count() > 0)
-                {
-                    foreach (var order in emptyOrders)
-                    {
-                        order.Customers.Clear();
-                    }
-                    db.Orders.RemoveRange(emptyOrders);
-                }
-
-                db.ProDetails.Remove(proDe);
-                db.Products.Remove(product);
-                db.SaveChanges();
-                productObserver.Notify("Product deleted: " + product.ProName);
-            }
             return RedirectToAction("DanhSachSanPham");
         }
 
