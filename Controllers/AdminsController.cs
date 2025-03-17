@@ -6,6 +6,7 @@ using DO_AN_FPT_SHOP.Models;
 using DO_AN_FPT_SHOP.Factories;
 using DO_AN_FPT_SHOP.DesignPattern;
 using DO_AN_FPT_SHOP.Observers;
+using DO_AN_FPT_SHOP.Builders;
 
 namespace DO_AN_FPT_SHOP.Controllers
 {
@@ -103,32 +104,22 @@ namespace DO_AN_FPT_SHOP.Controllers
 
         [HttpPost]
         public ActionResult TaoSanPham(int? catID, string ProName, int RemainQuantity,
-            string Function, int? Pin, int? Monitor, string Camera, string Chip, int? Ram, int? supID,
-            int colorID, string ProImage,
-            int stoID, double? Price)
+                                       string Function, int? Pin, int? Monitor, string Camera, string Chip, int? Ram, int? supID,
+                                       int colorID, string ProImage, int stoID, double? Price)
         {
-            if (ProName == null || db.Products.Where(r => r.ProName.ToLower() == ProName.ToLower()).Count() > 0 || ProName.Trim(' ').Length == 0)
+            if (ProName == null || db.Products.Any(r => r.ProName.ToLower() == ProName.ToLower()) || ProName.Trim().Length == 0)
             {
                 return RedirectToAction("TaoSanPham");
             }
 
-            // Sử dụng Factory để tạo đối tượng Product
-            Product product = EntityFactory.CreateProduct((int)catID, ProName, RemainQuantity);
+            var builder = new ProductBuilder();
+            var director = new ProductDirector(builder);
+
+            var product = director.BuildProduct((int)catID, ProName, RemainQuantity, (int)supID, Function, (int)Pin, (int)Monitor, Camera, Chip, (int)Ram, colorID, ProImage, stoID, (double)Price);
+
             db.Products.Add(product);
-
-            // Sử dụng Factory để tạo đối tượng ProDetail
-            ProDetail proDe = EntityFactory.CreateProDetail(product.ProID, (int)supID, Function, Pin, Monitor, Camera, Chip, Ram);
-            db.ProDetails.Add(proDe);
-
-            // Sử dụng Factory để tạo đối tượng ColorProDe
-            ColorProDe color = EntityFactory.CreateColorProDe(colorID, proDe.ProDeID, ProImage);
-            db.ColorProDes.Add(color);
-
-            // Sử dụng Factory để tạo đối tượng StoProDe
-            StoProDe sto = EntityFactory.CreateStoProDe(stoID, proDe.ProDeID, (decimal?)Price);
-            db.StoProDes.Add(sto);
-
             db.SaveChanges();
+
             productObserver.Notify("Product added: " + ProName);
             return RedirectToAction("DanhSachSanPham");
         }

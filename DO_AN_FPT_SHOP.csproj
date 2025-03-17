@@ -142,6 +142,9 @@
     <Compile Include="Controllers\OrderListController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DesignPattern\Builders\IProductBuilder.cs" />
+    <Compile Include="DesignPattern\Builders\ProductBuilder.cs" />
+    <Compile Include="DesignPattern\Builders\ProductDirector.cs" />
     <Compile Include="DesignPattern\DBContextSingleton.cs" />
     <Compile Include="DesignPattern\EntityFactory.cs" />
     <Compile Include="DesignPattern\Observers\IObserver.cs" />
