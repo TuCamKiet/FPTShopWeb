@@ -165,7 +165,9 @@
     <Compile Include="DesignPattern\Templates\CancelOrder.cs" />
     <Compile Include="DesignPattern\Templates\BuyOrder.cs" />
     <Compile Include="DesignPattern\Templates\OrderTemplate.cs" />
+    <Compile Include="DesignPattern\UnitOfWorkPattern\IRepository.cs" />
     <Compile Include="DesignPattern\UnitOfWorkPattern\IUnitOfWork.cs" />
+    <Compile Include="DesignPattern\UnitOfWorkPattern\Repository.cs" />
     <Compile Include="DesignPattern\UnitOfWorkPattern\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
