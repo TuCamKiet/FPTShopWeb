@@ -1,4 +1,5 @@
 ﻿using DO_AN_FPT_SHOP.DesignPattern;
+using DO_AN_FPT_SHOP.DesignPattern.States;
 using DO_AN_FPT_SHOP.DesignPattern.UnitOfWorkPattern;
 using DO_AN_FPT_SHOP.Models;
 using DO_AN_FPT_SHOP.Templates;
@@ -53,12 +54,13 @@ namespace DO_AN_FPT_SHOP.Controllers
 
         [HttpPost]
         public ActionResult HasOrdered(List<int> OrderID, List<int> OrderDetailID, List<int> ProDeID, List<int> Quantity, List<decimal> Price,
-            List<int> VoucherID, List<decimal?> Discount)
+        List<int> VoucherID, List<decimal?> Discount)
         {
-            var orderId = OrderID[0]; //Dat bien tranh loi Linq ko doc duoc get item cua List
+            var orderId = OrderID[0];
             var order = _unitOfWork.Orders.GetAll().FirstOrDefault(r => r.OrderID == orderId);
             if (order == null) { return RedirectToAction("Cart"); }
-            order.OrderStatus = 2;
+            var orderManager = new OrderManager(order);
+            orderManager.SetState(new ConfirmedState());
             order.OrderDate = DateTime.Now;
 
             var orDeList = _unitOfWork.OrderDetails.GetAll();
@@ -118,7 +120,8 @@ namespace DO_AN_FPT_SHOP.Controllers
         public ActionResult HuyDonHang(int OrderID)
         {
             var order = _unitOfWork.Orders.GetAll().FirstOrDefault(r => r.OrderID == OrderID);
-            order.OrderStatus = 1;
+            var orderManager = new OrderManager(order);
+            orderManager.SetState(new CanceledState());
             _unitOfWork.Commit();
             return RedirectToAction("Category", "Categories");
         }

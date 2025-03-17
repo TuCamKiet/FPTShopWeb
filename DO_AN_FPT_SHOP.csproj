@@ -159,6 +159,8 @@
     <Compile Include="DesignPattern\RepositoryPattern\ICategoryRepository.cs" />
     <Compile Include="DesignPattern\Services\CategoryService.cs" />
     <Compile Include="DesignPattern\Services\ICategoryService.cs" />
+    <Compile Include="DesignPattern\States\OrderManager.cs" />
+    <Compile Include="DesignPattern\States\OrderState.cs" />
     <Compile Include="DesignPattern\Strategy\AdminLoginStrategy.cs" />
     <Compile Include="DesignPattern\Strategy\CustomerLoginStrategy.cs" />
     <Compile Include="DesignPattern\Strategy\ILoginStrategy.cs" />
