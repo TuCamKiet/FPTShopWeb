@@ -18,11 +18,6 @@ namespace DO_AN_FPT_SHOP.Controllers
         private static readonly IUnitOfWork _unitOfWork = new UnitOfWork();
         private OrderTemplate _orderTemplate;
 
-        public OrderListController()
-        {
-            
-        }
-
         // GET: OrderList
         public ActionResult Cart()
         {

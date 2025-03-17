@@ -10,6 +10,8 @@ namespace DO_AN_FPT_SHOP.DesignPattern.UnitOfWorkPattern
         IRepository<Order> Orders { get; }
         IRepository<OrderDetail> OrderDetails { get; }
         IRepository<OrderVoucher> OrderVouchers { get; }
+        IRepository<Product> Products { get; } // Add Product repository
+        IRepository<User> Users { get; } // Add User repository
         void Commit();
     }
 }

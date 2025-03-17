@@ -12,10 +12,12 @@ namespace DO_AN_FPT_SHOP.DesignPattern.UnitOfWorkPattern
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly DbSet<T> _dbSet;
+        private readonly DbContext _context;
 
-        public Repository(DbSet<T> context)
+        public Repository(DbContext context)
         {
-            _dbSet = context;
+            _context = context;
+            _dbSet = _context.Set<T>();
         }
 
         public IEnumerable<T> GetAll()
@@ -41,6 +43,12 @@ namespace DO_AN_FPT_SHOP.DesignPattern.UnitOfWorkPattern
         public void Remove(T entity)
         {
             _dbSet.Remove(entity);
+        }
+        public void Update(T entity)
+        {
+            _dbSet.Attach(entity);
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Modified;
         }
     }
 }

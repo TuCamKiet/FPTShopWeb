@@ -152,6 +152,7 @@
     <Compile Include="DesignPattern\Commands\UpdateProductCommand.cs" />
     <Compile Include="DesignPattern\DBContextSingleton.cs" />
     <Compile Include="DesignPattern\EntityFactory.cs" />
+    <Compile Include="DesignPattern\Facades\ShopFacade.cs" />
     <Compile Include="DesignPattern\Observers\IObserver.cs" />
     <Compile Include="DesignPattern\Observers\ISubject.cs" />
     <Compile Include="DesignPattern\Observers\ProductoObserver.cs" />
