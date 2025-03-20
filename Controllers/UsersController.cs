@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using DO_AN_FPT_SHOP.DesignPattern;
+using DO_AN_FPT_SHOP.DesignPattern.Facades;
 using DO_AN_FPT_SHOP.DesignPattern.Strategy;
 using DO_AN_FPT_SHOP.Models;
 using Microsoft.Ajax.Utilities;

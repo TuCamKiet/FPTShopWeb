@@ -14,6 +14,7 @@ using PagedList.Mvc;
 using DO_AN_FPT_SHOP.DesignPattern;
 using DO_AN_FPT_SHOP.DesignPattern.RepositoryPattern;
 using DO_AN_FPT_SHOP.DesignPattern.Services;
+using DO_AN_FPT_SHOP.DesignPattern.Facades;
 
 namespace DO_AN_FPT_SHOP.Controllers
 {

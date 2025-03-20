@@ -8,6 +8,7 @@ using DO_AN_FPT_SHOP.DesignPattern;
 using DO_AN_FPT_SHOP.Observers;
 using DO_AN_FPT_SHOP.Builders;
 using DO_AN_FPT_SHOP.Commands;
+using DO_AN_FPT_SHOP.DesignPattern.Facades;
 
 namespace DO_AN_FPT_SHOP.Controllers
 {
@@ -16,13 +17,14 @@ namespace DO_AN_FPT_SHOP.Controllers
         private readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
         private readonly ProductObserver productObserver;
         private readonly ProductManager _productManager = new ProductManager();
+        private readonly ShopFacade _shopFacade = new ShopFacade();
 
         public AdminsController()
         {
             productObserver = new ProductObserver();
             // Attach observers
             productObserver.Attach(new LoggerObserver(this));
-        }
+        }   
 
         // GET: Admins
         public ActionResult DanhSachDanhMuc()
@@ -96,7 +98,8 @@ namespace DO_AN_FPT_SHOP.Controllers
 
         public ActionResult DanhSachSanPham()
         {
-            return View(db.Products.ToList());
+            var products = _shopFacade.GetAllProducts();
+            return View(products);
         }
 
         public ActionResult TaoSanPham()

@@ -9,25 +9,27 @@ using System.Data.Entity;
 using DO_AN_FPT_SHOP.Models;
 using Newtonsoft.Json.Linq;
 using DO_AN_FPT_SHOP.DesignPattern;
+using DO_AN_FPT_SHOP.DesignPattern.Facades;
 
 namespace DO_AN_FPT_SHOP.Controllers
 {
     public class ProductsController : Controller
     {
         private static readonly DBFPTSHOPEntities db = DBContextSingleton.Instance;
+        private readonly ShopFacade _shopFacade = new ShopFacade();
+
         public ActionResult ProductDetail(int? id)
         {
             if (id == null) return RedirectToAction("Category", "Categories");
-
-            var result = GetDetails((int)id);
-
-            return View(result);
+            var product = GetDetails((int)id);
+            return View(product);
         }
+
 
         [HttpPost]
         public ActionResult Search(string key)
         {
-            var p = db.Products.Where(r => r.ProName.Contains(key)).ToList();
+            var p =  _shopFacade.GetAllProducts().Where(r => r.ProName.Contains(key)).ToList();
 
             List<ViewModelProduct> searchResult = new List<ViewModelProduct>();
 
